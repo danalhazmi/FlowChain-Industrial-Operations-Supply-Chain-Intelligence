@@ -12,8 +12,6 @@ Instead of treating assets, suppliers, requests, users, permissions, and analyti
 
 ---
 
----
-
 ## 🚀 Project Overview
 
 In industrial environments, operational information is distributed across multiple areas such as:
