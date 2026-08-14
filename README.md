@@ -1,6 +1,8 @@
 # FlowChain
 ### Industrial Operations & Supply Chain Intelligence Platform
 
+🌐 **Live Demo:** https://danalhazmi.github.io/FlowChain-Industrial-Operations-Supply-Chain-Intelligence/
+
 > **Connect the operation. Understand the data. Enable the decision.**
 
 FlowChain is a connected Industrial Operations & Supply Chain Intelligence platform designed to demonstrate how operational data, workflows, access governance, and analytics can work together within a single ecosystem.
@@ -44,7 +46,7 @@ The goal was not to create a traditional website with isolated pages, but to des
 
 # 🧩 Core System Layers
 
-FlowChain is structured around three connected layers:
+FlowChain is structured around three connected layers.
 
 ### 1. Operational Layer
 
@@ -128,7 +130,7 @@ This allows users to identify suppliers that are performing reliably and supplie
 
 ---
 
-## 📋 Operational Request Management
+# 📋 Operational Request Management
 
 FlowChain includes an operational workflow for submitting and tracking requests.
 
