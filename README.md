@@ -10,6 +10,9 @@ FlowChain is a connected **Industrial Operations & Supply Chain Intelligence pla
 
 Instead of treating assets, suppliers, requests, users, permissions, and analytics as isolated components, FlowChain connects them into a unified operational concept that supports **operational visibility, workflow management, access governance, and data-driven decision-making**.
 
+---
+
+---
 
 ## 🚀 Project Overview
 
