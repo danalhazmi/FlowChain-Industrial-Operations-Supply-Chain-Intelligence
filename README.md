@@ -10,6 +10,23 @@ FlowChain is a connected **Industrial Operations & Supply Chain Intelligence pla
 
 Instead of treating assets, suppliers, requests, users, permissions, and analytics as isolated components, FlowChain connects them into a unified operational concept that supports **operational visibility, workflow management, access governance, and data-driven decision-making**.
 
+---
+
+## 📑 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [Project Vision](#-project-vision)
+- [Key Features](#-key-features)
+- [System Architecture](#-system-architecture)
+- [Access Governance & Permissions](#-access-governance--permissions)
+- [Role-Based Access Control](#-role-based-access-control)
+- [Access Request Lifecycle](#-access-request-lifecycle)
+- [Tech Stack](#-tech-stack)
+- [Screenshots](#-screenshots)
+- [Getting Started](#-getting-started)
+- [Contact](#-contact)
+
+---
 
 ## 🚀 Project Overview
 
@@ -117,7 +134,7 @@ The access model follows:
 
 **Identity → Authentication → Authorization → Role → Access**
 
-![Admin Access Management](Screenshots/admin-access-management.png)
+![Admin Access Management](./screenshots/admin-access-management.png)
 
 ---
 
@@ -137,7 +154,7 @@ It includes:
 
 The purpose of this layer is to move beyond simply displaying data and instead use it to support operational understanding and decision-making.
 
-![Power BI Analytics](Screenshots/powerbi-analytics.png)
+![Power BI Analytics](./screenshots/powerbi-analytics.png)
 
 ---
 
@@ -200,7 +217,7 @@ Administrative capabilities include:
 
 This ensures that administrative functionality is not exposed as part of the standard user experience.
 
-![Admin Control Center](Screenshots/admin-control-center.png)
+![Admin Control Center](./screenshots/admin-control-center.png)
 
 ---
 
