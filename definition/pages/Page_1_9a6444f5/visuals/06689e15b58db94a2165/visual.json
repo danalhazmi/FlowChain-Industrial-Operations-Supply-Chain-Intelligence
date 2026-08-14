@@ -1,0 +1,190 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "06689e15b58db94a2165",
+  "position": {
+    "x": 347.14285714285717,
+    "y": 458.57142857142861,
+    "z": 8000,
+    "height": 221.42857142857144,
+    "width": 511.42857142857144,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Suppliers"
+                    }
+                  },
+                  "Property": "Lead Time"
+                }
+              },
+              "queryRef": "Suppliers.Lead Time",
+              "nativeQueryRef": "Lead Time",
+              "active": true
+            }
+          ]
+        },
+        "Play": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Suppliers"
+                    }
+                  },
+                  "Property": "Supplier Name"
+                }
+              },
+              "queryRef": "Suppliers.Supplier Name",
+              "nativeQueryRef": "Supplier Name"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Suppliers"
+                    }
+                  },
+                  "Property": "Risk Level"
+                }
+              },
+              "queryRef": "Suppliers.Risk Level",
+              "nativeQueryRef": "Risk Level"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Assets"
+                    }
+                  },
+                  "Property": "Supplier Performance"
+                }
+              },
+              "queryRef": "Assets.Supplier Performance",
+              "nativeQueryRef": "Supplier Performance",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Supplier Performance'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e0b2c33dcdb557d2ee02",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Assets"
+              }
+            },
+            "Property": "Supplier Performance"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7b487b1d9705220d7929",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Suppliers"
+              }
+            },
+            "Property": "Lead Time"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6be37ab81a0c76440ae0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Suppliers"
+              }
+            },
+            "Property": "Risk Level"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "06d3aa9beb5ee2be0150",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Suppliers"
+              }
+            },
+            "Property": "Supplier Name"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Asset Details | FlowChain</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap"
+    rel="stylesheet"
+>
+
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #1d1c1c;
+    color: #fffefb;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding-top: 130px;
+    padding-bottom: 40px;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.nav-brand {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar-glass {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 1250px;
+
+    padding: 14px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(59,60,61,.8);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid #b6ccd8;
+    border-radius: 100px;
+
+    z-index: 1000;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #fffefb;
+    white-space: nowrap;
+}
+
+.logo-dot {
+    width: 9px;
+    height: 9px;
+
+    background: #71c4ef;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 10px rgba(113,196,239,.7);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    color: #c4c4c2;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    transition: color .25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    white-space: nowrap;
+}
+
+.btn-login {
+    color: #d6d4d1;
+    font-size: 11px;
+    padding: 8px 12px;
+}
+
+.btn-access {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 17px;
+
+    border-radius: 50px;
+
+    background: #71c4ef;
+    color: #151515;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.btn-access:hover {
+    transform: translateY(-1px);
+    background: #86cff2;
+}
+
+
+/* =========================================================
+   LOGGED-IN USER
+========================================================= */
+
+.welcome-user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    white-space: nowrap;
+
+    font-size: 11px;
+}
+
+.welcome-text {
+    color: #aaa8a5;
+    font-weight: 400;
+}
+
+.employee-name {
+    color: #71c4ef;
+    font-weight: 600;
+}
+
+.logout-btn {
+    border:
+        1px solid rgba(182,204,216,.45);
+
+    background:
+        rgba(29,28,28,.55);
+
+    color: #d6d4d1;
+
+    padding: 8px 13px;
+
+    border-radius: 50px;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+.logout-btn:hover {
+    color: #ffffff;
+    border-color: #71c4ef;
+    background: rgba(113,196,239,.08);
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   BACKGROUND NETWORK
+========================================================= */
+
+.tech-network {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 1;
+
+    overflow: hidden;
+
+    opacity: .40;
+}
+
+.network-line {
+    position: absolute;
+
+    height: 1px;
+
+    background:
+        rgba(113,196,239,.13);
+
+    transform-origin:
+        left center;
+}
+
+.network-line.green {
+    background:
+        rgba(153,194,77,.11);
+}
+
+.network-line.line-a {
+    width: 70vw;
+
+    left: -12vw;
+    top: 31%;
+
+    transform:
+        rotate(-3deg);
+}
+
+.network-line.line-b {
+    width: 64vw;
+
+    right: -12vw;
+    top: 57%;
+
+    transform:
+        rotate(3deg);
+}
+
+.network-line.line-c {
+    width: 72vw;
+
+    left: -15vw;
+    top: 81%;
+
+    transform:
+        rotate(-2deg);
+}
+
+.signal {
+    position: absolute;
+
+    width: 34px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(113,196,239,.9),
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px rgba(113,196,239,.55);
+
+    animation:
+        dataSignal 8s linear infinite;
+}
+
+.signal.green {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(153,194,77,.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px rgba(153,194,77,.45);
+}
+
+.signal.s1 {
+    top: 31%;
+    left: -5%;
+}
+
+.signal.s2 {
+    top: 57%;
+    left: -10%;
+
+    animation-delay: 3s;
+}
+
+.signal.s3 {
+    top: 81%;
+    left: -8%;
+
+    animation-delay: 5.5s;
+}
+
+@keyframes dataSignal {
+
+    0% {
+        transform:
+            translateX(0);
+
+        opacity: 0;
+    }
+
+    8% {
+        opacity: .75;
+    }
+
+    75% {
+        opacity: .65;
+    }
+
+    100% {
+        transform:
+            translateX(120vw);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container {
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding-bottom: 40px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    margin-bottom: 28px;
+
+    color: #777573;
+
+    font-size: 11px;
+    letter-spacing: .2px;
+}
+
+.breadcrumb a {
+    color: #71c4ef;
+
+    transition:
+        color .25s ease;
+}
+
+.breadcrumb a:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   ASSET HEADER
+========================================================= */
+
+.asset-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 30px;
+
+    margin-bottom: 30px;
+}
+
+.asset-kicker {
+    color: #71c4ef;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.asset-header h1 {
+    font-size: 34px;
+    line-height: 1.1;
+
+    font-weight: 700;
+
+    color: #fffefb;
+
+    margin-bottom: 9px;
+}
+
+.asset-header p {
+    color: #aaa8a5;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ASSET STATUS
+========================================================= */
+
+.asset-status {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(153,194,77,.08);
+
+    border:
+        1px solid rgba(153,194,77,.35);
+
+    color: #99c24d;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: .5px;
+
+    white-space: nowrap;
+}
+
+.asset-status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #99c24d;
+
+    box-shadow:
+        0 0 8px rgba(153,194,77,.8);
+}
+
+
+/* =========================================================
+   TELEMETRY CARDS
+========================================================= */
+
+.telemetry-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+.telemetry-card {
+    position: relative;
+
+    background: #3b3c3d;
+
+    border:
+        1px solid #b6ccd8;
+
+    border-radius: 15px;
+
+    padding:
+        19px 20px;
+
+    overflow: hidden;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+}
+
+.telemetry-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    right: -40px;
+    bottom: -40px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(113,196,239,.06);
+}
+
+.telemetry-card:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        #71c4ef;
+}
+
+.telemetry-label {
+    color: #aaa8a5;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .6px;
+
+    margin-bottom: 10px;
+}
+
+.telemetry-value {
+    color: #fffefb;
+
+    font-family:
+        'Space Grotesk',
+        sans-serif;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+}
+
+.telemetry-unit {
+    color: #71c4ef;
+
+    font-family:
+        'Inter',
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    margin-left: 3px;
+}
+
+.telemetry-value.updated {
+    animation:
+        valuePulse .4s ease;
+}
+
+@keyframes valuePulse {
+
+    0% {
+        opacity: .55;
+        transform:
+            translateY(2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.asset-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.25fr .75fr;
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.panel {
+    background: #3b3c3d;
+
+    border:
+        1px solid #b6ccd8;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.25);
+
+    transition:
+        border-color .25s ease;
+}
+
+.panel:hover {
+    border-color:
+        rgba(113,196,239,.7);
+}
+
+.panel-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding:
+        17px 20px;
+
+    border-bottom:
+        1px solid rgba(182,204,216,.12);
+}
+
+.panel-header h2 {
+    color: #fffefb;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.panel-body {
+    padding: 20px;
+}
+
+
+/* =========================================================
+   LIVE TELEMETRY
+========================================================= */
+
+.chart {
+    height: 245px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 7px;
+
+    padding:
+        20px
+        10px
+        8px;
+
+    border-radius: 10px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        repeating-linear-gradient(
+            to top,
+            rgba(182,204,216,.07) 0,
+            rgba(182,204,216,.07) 1px,
+            transparent 1px,
+            transparent 49px
+        );
+}
+
+.chart::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(113,196,239,.025),
+            transparent
+        );
+
+    animation:
+        telemetryScan 4s linear infinite;
+}
+
+@keyframes telemetryScan {
+
+    0% {
+        transform:
+            translateX(-100%);
+    }
+
+    100% {
+        transform:
+            translateX(100%);
+    }
+
+}
+
+.chart-bar {
+    flex: 1;
+
+    min-width: 5px;
+
+    height: 50%;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(113,196,239,.25),
+            #71c4ef
+        );
+
+    border-radius:
+        4px 4px 1px 1px;
+
+    box-shadow:
+        0 0 10px rgba(113,196,239,.12);
+
+    transform-origin:
+        bottom center;
+
+    transition:
+        height .8s cubic-bezier(.2,.7,.2,1),
+        opacity .3s ease,
+        filter .3s ease;
+}
+
+.chart-bar:hover {
+    opacity: .8;
+}
+
+
+/* =========================================================
+   LIVE BADGE
+========================================================= */
+
+.panel-header .asset-status {
+    padding:
+        5px 9px;
+
+    background:
+        rgba(113,196,239,.07);
+
+    border-color:
+        rgba(113,196,239,.3);
+
+    color: #71c4ef;
+
+    font-size: 8px;
+}
+
+.panel-header .asset-status-dot {
+    width: 5px;
+    height: 5px;
+
+    background: #71c4ef;
+
+    box-shadow:
+        0 0 7px rgba(113,196,239,.8);
+}
+
+
+/* =========================================================
+   ASSET INFORMATION
+========================================================= */
+
+.detail-list {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.detail-item {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        12px 0;
+
+    border-bottom:
+        1px solid rgba(182,204,216,.10);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: #aaa8a5;
+
+    font-size: 11px;
+}
+
+.detail-value {
+    color: #fffefb;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   RISK COLORS
+========================================================= */
+
+.risk-low {
+    color: #99c24d !important;
+    font-weight: 700 !important;
+}
+
+.risk-medium {
+    color: #f59e0b !important;
+    font-weight: 700 !important;
+}
+
+.risk-high {
+    color: #ef4444 !important;
+    font-weight: 700 !important;
+
+    text-shadow:
+        0 0 8px rgba(239,68,68,.18);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+    position: relative;
+
+    width: 100%;
+
+    border-top:
+        1px solid rgba(182,204,216,.22);
+
+    padding:
+        28px 5%;
+
+    z-index: 5;
+
+    margin-top: 40px;
+
+    background:
+        #1d1c1c;
+}
+
+.footer-inner {
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.footer-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #deddda;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.footer-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #71c4ef;
+
+    box-shadow:
+        0 0 8px rgba(113,196,239,.6);
+}
+
+.footer-copy,
+.footer-year {
+    color: #777573;
+
+    font-size: 9px;
+
+    letter-spacing: .3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .telemetry-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .asset-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .asset-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    .navbar-glass {
+        width: 94%;
+
+        padding:
+            11px 18px;
+    }
+
+    .telemetry-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .asset-header h1 {
+        font-size: 28px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .welcome-user {
+        font-size: 10px;
+    }
+
+    .logout-btn {
+        padding:
+            7px 10px;
+
+        font-size: 9px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+
+        gap: 12px;
+
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<div class="tech-network">
+
+    <div class="network-line line-a"></div>
+
+    <div class="network-line line-b green"></div>
+
+    <div class="network-line line-c"></div>
+
+    <div class="signal s1"></div>
+
+    <div class="signal s2 green"></div>
+
+    <div class="signal s3"></div>
+
+</div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar-glass">
+
+    <a
+        href="index.html"
+        class="nav-brand"
+    >
+
+        <span class="logo-dot"></span>
+
+        <span>
+            FlowChain
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="inventory.html"
+                    class="active"
+                >
+                    Operations
+                </a>
+            </li>
+
+            <li>
+                <a href="suppliers.html">
+                    Suppliers
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Support
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <div
+        class="nav-actions"
+        id="navActions"
+    >
+
+        <a
+            href="login.html"
+            class="btn-login"
+        >
+            Login
+        </a>
+
+        <a
+            href="register.html"
+            class="btn-access"
+        >
+            REQUEST ACCESS
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container">
+
+
+    <!-- BREADCRUMB -->
+
+    <div class="breadcrumb">
+
+        <a href="inventory.html">
+            Operations
+        </a>
+
+        <span>/</span>
+
+        <span>
+            Asset Details
+        </span>
+
+    </div>
+
+
+    <!-- ASSET HEADER -->
+
+    <section class="asset-header">
+
+        <div>
+
+            <div class="asset-kicker">
+                ASSET TELEMETRY
+            </div>
+
+            <h1 id="assetName">
+                Heavy Hydraulic Crane X-8
+            </h1>
+
+            <p id="assetMeta">
+                Asset ID: FC-EQ-9042
+                &nbsp; • &nbsp;
+                Yanbu Hub - Zone A
+            </p>
+
+        </div>
+
+
+        <div class="asset-status">
+
+            <span class="asset-status-dot"></span>
+
+            OPERATIONAL
+
+        </div>
+
+    </section>
+
+
+    <!-- TELEMETRY CARDS -->
+
+    <section class="telemetry-grid">
+
+
+        <div class="telemetry-card">
+
+            <div class="telemetry-label">
+                Engine Temperature
+            </div>
+
+            <div
+                class="telemetry-value"
+                id="engineTemp"
+            >
+                82.0
+
+                <span class="telemetry-unit">
+                    °C
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="telemetry-card">
+
+            <div class="telemetry-label">
+                Fuel Level
+            </div>
+
+            <div
+                class="telemetry-value"
+                id="fuelLevel"
+            >
+                68.0
+
+                <span class="telemetry-unit">
+                    %
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="telemetry-card">
+
+            <div class="telemetry-label">
+                Engine Hours
+            </div>
+
+            <div
+                class="telemetry-value"
+                id="engineHours"
+            >
+                8,421.0
+
+                <span class="telemetry-unit">
+                    hrs
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="telemetry-card">
+
+            <div class="telemetry-label">
+                Last Service
+            </div>
+
+            <div
+                class="telemetry-value"
+                id="lastService"
+            >
+                14.0
+
+                <span class="telemetry-unit">
+                    days ago
+                </span>
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- MAIN PANELS -->
+
+    <section class="asset-grid">
+
+
+        <!-- LIVE TELEMETRY -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Live Telemetry
+                </h2>
+
+                <span class="asset-status">
+
+                    <span class="asset-status-dot"></span>
+
+                    LIVE
+
+                </span>
+
+            </div>
+
+
+            <div class="panel-body">
+
+                <div
+                    class="chart"
+                    id="telemetryChart"
+                >
+
+                    <div
+                        class="chart-bar"
+                        style="height:42%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:48%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:53%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:47%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:61%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:57%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:64%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:58%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:69%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:63%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:74%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:70%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:78%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:73%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:81%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:76%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:84%"
+                    ></div>
+
+                    <div
+                        class="chart-bar"
+                        style="height:79%"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ASSET INFORMATION -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Asset Information
+                </h2>
+
+            </div>
+
+
+            <div class="panel-body">
+
+                <div class="detail-list">
+
+
+                    <div class="detail-item">
+
+                        <span class="detail-label">
+                            Asset Type
+                        </span>
+
+                        <span
+                            class="detail-value"
+                            id="assetType"
+                        >
+                            Heavy Hydraulic Crane
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span class="detail-label">
+                            Manufacturer
+                        </span>
+
+                        <span
+                            class="detail-value"
+                            id="manufacturer"
+                        >
+                            Industrial Fleet
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span class="detail-label">
+                            Location
+                        </span>
+
+                        <span
+                            class="detail-value"
+                            id="assetLocation"
+                        >
+                            Yanbu Hub
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span class="detail-label">
+                            Operating Status
+                        </span>
+
+                        <span
+                            class="detail-value"
+                            id="operatingStatus"
+                        >
+                            Operational
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span class="detail-label">
+                            Maintenance
+                        </span>
+
+                        <span
+                            class="detail-value"
+                            id="maintenanceStatus"
+                        >
+                            Scheduled
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span class="detail-label">
+                            Risk Level
+                        </span>
+
+                        <span
+                            class="detail-value risk-low"
+                            id="riskLevel"
+                        >
+                            Low
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+
+            <span class="footer-dot"></span>
+
+            FlowChain
+
+        </div>
+
+
+        <div class="footer-copy">
+            Industrial Supply Chain Intelligence
+        </div>
+
+
+        <div class="footer-year">
+            © 2026 FlowChain
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     LIVE TELEMETRY SYSTEM
+========================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =====================================================
+           USER SESSION
+        ===================================================== */
+
+        const navActions =
+            document.getElementById(
+                "navActions"
+            );
+
+        const storedUser =
+            localStorage.getItem(
+                "flowchainUser"
+            );
+
+
+        if (
+            navActions &&
+            storedUser
+        ) {
+
+            let user = null;
+
+
+            try {
+
+                user =
+                    JSON.parse(
+                        storedUser
+                    );
+
+            } catch (error) {
+
+                localStorage.removeItem(
+                    "flowchainUser"
+                );
+
+                localStorage.removeItem(
+                    "flowchainLoggedIn"
+                );
+
+                localStorage.removeItem(
+                    "flowchainUserName"
+                );
+
+                localStorage.removeItem(
+                    "flowchainAccountType"
+                );
+
+            }
+
+
+            if (
+                user &&
+                user.name
+            ) {
+
+                navActions.innerHTML = `
+
+                    <div class="welcome-user">
+
+                        <span class="welcome-text">
+                            Welcome,
+                        </span>
+
+                        <span class="employee-name">
+                            ${user.name}
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="logout-btn"
+                        onclick="flowchainLogout()"
+                    >
+                        Logout
+                    </button>
+
+                `;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           GET ASSET ID
+        ===================================================== */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const assetId =
+            (
+                params.get("id") ||
+                "EQ-9042"
+            ).toUpperCase();
+
+
+        /* =====================================================
+           ASSET DATABASE
+        ===================================================== */
+
+        const assetData = {
+
+            "EQ-9042": {
+
+                name:
+                    "Heavy Hydraulic Crane X-8",
+
+                id:
+                    "EQ-9042",
+
+                location:
+                    "Yanbu Hub - Zone A",
+
+                type:
+                    "Heavy Hydraulic Crane",
+
+                manufacturer:
+                    "Industrial Fleet",
+
+                status:
+                    "Operational",
+
+                maintenance:
+                    "Scheduled",
+
+                risk:
+                    "Low",
+
+                riskClass:
+                    "risk-low",
+
+                temperature:
+                    82,
+
+                fuel:
+                    68,
+
+                hours:
+                    8421.0,
+
+                service:
+                    14.0,
+
+                base:
+                    58,
+
+                volatility:
+                    8
+
+            },
+
+
+            "EQ-1105": {
+
+                name:
+                    "Industrial Conveyor Belt Pro",
+
+                id:
+                    "EQ-1105",
+
+                location:
+                    "Jubail Hub - Zone B",
+
+                type:
+                    "Industrial Conveyor System",
+
+                manufacturer:
+                    "Industrial Fleet",
+
+                status:
+                    "Operational",
+
+                maintenance:
+                    "Routine Check Due",
+
+                risk:
+                    "Medium",
+
+                riskClass:
+                    "risk-medium",
+
+                temperature:
+                    91,
+
+                fuel:
+                    54,
+
+                hours:
+                    11240.0,
+
+                service:
+                    27.0,
+
+                base:
+                    63,
+
+                volatility:
+                    15
+
+            },
+
+
+            "EQ-3321": {
+
+                name:
+                    "Petrochemical Turbine Core",
+
+                id:
+                    "EQ-3321",
+
+                location:
+                    "Dammam Logistics Park",
+
+                type:
+                    "Petrochemical Turbine",
+
+                manufacturer:
+                    "Industrial Fleet",
+
+                status:
+                    "Operational",
+
+                maintenance:
+                    "Inspection Required",
+
+                risk:
+                    "High",
+
+                riskClass:
+                    "risk-high",
+
+                temperature:
+                    104,
+
+                fuel:
+                    39,
+
+                hours:
+                    18620.0,
+
+                service:
+                    41.0,
+
+                base:
+                    72,
+
+                volatility:
+                    24
+
+            }
+
+        };
+
+
+        const currentAsset =
+            assetData[assetId] ||
+            assetData["EQ-9042"];
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const assetName =
+            document.getElementById(
+                "assetName"
+            );
+
+        const assetMeta =
+            document.getElementById(
+                "assetMeta"
+            );
+
+        const assetType =
+            document.getElementById(
+                "assetType"
+            );
+
+        const manufacturer =
+            document.getElementById(
+                "manufacturer"
+            );
+
+        const assetLocation =
+            document.getElementById(
+                "assetLocation"
+            );
+
+        const operatingStatus =
+            document.getElementById(
+                "operatingStatus"
+            );
+
+        const maintenanceStatus =
+            document.getElementById(
+                "maintenanceStatus"
+            );
+
+        const riskLevel =
+            document.getElementById(
+                "riskLevel"
+            );
+
+        const engineTemp =
+            document.getElementById(
+                "engineTemp"
+            );
+
+        const fuelLevel =
+            document.getElementById(
+                "fuelLevel"
+            );
+
+        const engineHours =
+            document.getElementById(
+                "engineHours"
+            );
+
+        const lastService =
+            document.getElementById(
+                "lastService"
+            );
+
+
+        /* =====================================================
+           STATIC ASSET INFORMATION
+        ===================================================== */
+
+        if (assetName) {
+
+            assetName.textContent =
+                currentAsset.name;
+
+        }
+
+
+        if (assetMeta) {
+
+            assetMeta.innerHTML =
+                "Asset ID: FC-" +
+                currentAsset.id +
+                " &nbsp; • &nbsp; " +
+                currentAsset.location;
+
+        }
+
+
+        if (assetType) {
+
+            assetType.textContent =
+                currentAsset.type;
+
+        }
+
+
+        if (manufacturer) {
+
+            manufacturer.textContent =
+                currentAsset.manufacturer;
+
+        }
+
+
+        if (assetLocation) {
+
+            assetLocation.textContent =
+                currentAsset.location;
+
+        }
+
+
+        if (operatingStatus) {
+
+            operatingStatus.textContent =
+                currentAsset.status;
+
+        }
+
+
+        if (maintenanceStatus) {
+
+            maintenanceStatus.textContent =
+                currentAsset.maintenance;
+
+        }
+
+
+        if (riskLevel) {
+
+            riskLevel.textContent =
+                currentAsset.risk;
+
+            riskLevel.className =
+                "detail-value " +
+                currentAsset.riskClass;
+
+        }
+
+
+        /* =====================================================
+           LIVE NUMBERS
+        ===================================================== */
+
+        let liveTemperature =
+            currentAsset.temperature;
+
+        let liveFuel =
+            currentAsset.fuel;
+
+        let liveHours =
+            currentAsset.hours;
+
+        let liveService =
+            currentAsset.service;
+
+
+        function pulseValue(element) {
+
+            if (!element) {
+                return;
+            }
+
+            element.classList.remove(
+                "updated"
+            );
+
+            void element.offsetWidth;
+
+            element.classList.add(
+                "updated"
+            );
+
+        }
+
+
+        /* =====================================================
+           ENGINE TEMPERATURE
+        ===================================================== */
+
+        function updateEngineTemperature() {
+
+            const variation =
+                (Math.random() * 3) - 1.5;
+
+
+            liveTemperature =
+                currentAsset.temperature +
+                variation;
+
+
+            liveTemperature =
+                Math.round(
+                    liveTemperature * 10
+                ) / 10;
+
+
+            engineTemp.innerHTML =
+                liveTemperature.toFixed(1) +
+                '<span class="telemetry-unit">°C</span>';
+
+
+            pulseValue(
+                engineTemp
+            );
+
+        }
+
+
+        /* =====================================================
+           FUEL LEVEL
+        ===================================================== */
+
+        function updateFuelLevel() {
+
+            const variation =
+                (Math.random() * .6) - .3;
+
+
+            liveFuel +=
+                variation;
+
+
+            liveFuel =
+                Math.max(
+                    1,
+                    Math.min(
+                        100,
+                        liveFuel
+                    )
+                );
+
+
+            liveFuel =
+                Math.round(
+                    liveFuel * 10
+                ) / 10;
+
+
+            fuelLevel.innerHTML =
+                liveFuel.toFixed(1) +
+                '<span class="telemetry-unit">%</span>';
+
+
+            pulseValue(
+                fuelLevel
+            );
+
+        }
+
+
+        /* =====================================================
+           ENGINE HOURS
+           واضح التغيير كل تحديث
+        ===================================================== */
+
+        function updateEngineHours() {
+
+            /*
+             * Increase by 0.1 hour
+             * on every update.
+             */
+
+            liveHours +=
+                0.1;
+
+
+            liveHours =
+                Math.round(
+                    liveHours * 10
+                ) / 10;
+
+
+            engineHours.innerHTML =
+                liveHours.toLocaleString(
+                    undefined,
+                    {
+                        minimumFractionDigits: 1,
+                        maximumFractionDigits: 1
+                    }
+                ) +
+                '<span class="telemetry-unit">hrs</span>';
+
+
+            pulseValue(
+                engineHours
+            );
+
+        }
+
+
+        /* =====================================================
+           LAST SERVICE
+           واضح التغيير كل تحديث
+        ===================================================== */
+
+        function updateLastService() {
+
+            /*
+             * Increase service age by 0.1 day
+             * on every update.
+             */
+
+            liveService +=
+                0.1;
+
+
+            liveService =
+                Math.round(
+                    liveService * 10
+                ) / 10;
+
+
+            lastService.innerHTML =
+                liveService.toFixed(1) +
+                '<span class="telemetry-unit">days ago</span>';
+
+
+            pulseValue(
+                lastService
+            );
+
+        }
+
+
+        /* =====================================================
+           UPDATE TOP TELEMETRY CARDS
+        ===================================================== */
+
+        function updateTopTelemetry() {
+
+            updateEngineTemperature();
+
+            updateFuelLevel();
+
+            updateEngineHours();
+
+            updateLastService();
+
+        }
+
+
+        /*
+         * Initial update
+         */
+
+        updateTopTelemetry();
+
+
+        /*
+         * Update all four top cards
+         * every 1.5 seconds.
+         */
+
+        setInterval(
+            updateTopTelemetry,
+            1500
+        );
+
+
+        /* =====================================================
+           LIVE TELEMETRY CHART
+        ===================================================== */
+
+        const bars =
+            Array.from(
+                document.querySelectorAll(
+                    ".chart-bar"
+                )
+            );
+
+
+        function randomBetween(
+            min,
+            max
+        ) {
+
+            return Math.random() *
+                (max - min) +
+                min;
+
+        }
+
+
+        function updateTelemetryChart() {
+
+            bars.forEach(
+                function(
+                    bar,
+                    index
+                ) {
+
+
+                    const wave =
+                        Math.sin(
+                            (
+                                Date.now() /
+                                1800
+                            ) +
+                            index * .55
+                        ) * 5;
+
+
+                    const noise =
+                        randomBetween(
+                            -currentAsset.volatility,
+                            currentAsset.volatility
+                        );
+
+
+                    let value =
+                        currentAsset.base +
+                        wave +
+                        noise;
+
+
+                    value =
+                        Math.max(
+                            15,
+                            Math.min(
+                                95,
+                                value
+                            )
+                        );
+
+
+                    /*
+                     * High risk:
+                     * bigger spikes.
+                     */
+
+                    if (
+                        currentAsset.risk ===
+                        "High" &&
+                        Math.random() < .18
+                    ) {
+
+                        value =
+                            randomBetween(
+                                82,
+                                96
+                            );
+
+                    }
+
+
+                    /*
+                     * Medium risk:
+                     * moderate spikes.
+                     */
+
+                    if (
+                        currentAsset.risk ===
+                        "Medium" &&
+                        Math.random() < .10
+                    ) {
+
+                        value =
+                            randomBetween(
+                                75,
+                                88
+                            );
+
+                    }
+
+
+                    bar.style.height =
+                        value + "%";
+
+                }
+            );
+
+        }
+
+
+        updateTelemetryChart();
+
+
+        setInterval(
+            updateTelemetryChart,
+            1200
+        );
+
+    }
+);
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function flowchainLogout() {
+
+    localStorage.removeItem(
+        "flowchainUser"
+    );
+
+    localStorage.removeItem(
+        "flowchainLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "flowchainUserName"
+    );
+
+    localStorage.removeItem(
+        "flowchainAccountType"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

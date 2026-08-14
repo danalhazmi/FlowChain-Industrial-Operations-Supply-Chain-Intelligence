@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "card51392591533901923",
+  "position": {
+    "x": 649,
+    "y": 65,
+    "z": 3000,
+    "height": 93,
+    "width": 296,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Assets"
+                        }
+                      },
+                      "Property": "Critical Alert"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Min(Assets.Critical Alert)",
+              "nativeQueryRef": "Last Critical Alert",
+              "displayName": "Critical Alerts"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Assets"
+                      }
+                    },
+                    "Property": "Critical Alert"
+                  }
+                },
+                "Function": 2
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

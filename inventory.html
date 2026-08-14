@@ -1,0 +1,2465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FlowChain | Asset Intelligence</title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: #1d1c1c;
+            color: #fffefb;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            padding-top: 130px;
+        }
+
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .navbar-glass {
+
+            position: fixed;
+
+            top: 25px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 90%;
+            max-width: 1250px;
+
+            padding: 14px 32px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(59, 60, 61, .80);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border: 1px solid #b6ccd8;
+
+            border-radius: 100px;
+
+            z-index: 1000;
+        }
+
+
+        .nav-brand {
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            font-family: 'Space Grotesk', sans-serif;
+
+            font-size: 18px;
+            font-weight: 700;
+
+            color: #fffefb;
+
+            white-space: nowrap;
+        }
+
+
+        .logo-dot {
+
+            width: 9px;
+            height: 9px;
+
+            background: #71c4ef;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 10px rgba(113,196,239,.7);
+
+            flex-shrink: 0;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+            align-items: center;
+
+            gap: 28px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+
+            color: #c4c4c2;
+
+            font-size: 11px;
+            font-weight: 500;
+
+            transition: color .25s ease;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+
+            color: #ffffff;
+        }
+
+
+        .nav-actions {
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .login {
+
+            color: #d6d4d1;
+
+            font-size: 11px;
+
+            padding: 8px 12px;
+        }
+
+
+        .access {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 9px 17px;
+
+            border-radius: 50px;
+
+            background: #71c4ef;
+
+            color: #151515;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+
+        .access:hover {
+
+            transform: translateY(-1px);
+
+            background: #86cff2;
+        }
+
+
+        /* =========================================================
+           LOGGED-IN USER
+        ========================================================= */
+
+        .welcome-user {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            white-space: nowrap;
+
+            font-size: 11px;
+        }
+
+
+        .welcome-text {
+
+            color: #aaa8a5;
+
+            font-weight: 400;
+        }
+
+
+        .employee-name {
+
+            color: #71c4ef;
+
+            font-weight: 600;
+        }
+
+
+        .logout-btn {
+
+            border:
+                1px solid rgba(182,204,216,.45);
+
+            background:
+                rgba(29,28,28,.55);
+
+            color: #d6d4d1;
+
+            padding: 8px 13px;
+
+            border-radius: 50px;
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                color .25s ease,
+                border-color .25s ease,
+                background .25s ease,
+                transform .25s ease;
+        }
+
+
+        .logout-btn:hover {
+
+            color: #ffffff;
+
+            border-color: #71c4ef;
+
+            background:
+                rgba(113,196,239,.08);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================================================
+           TECH BACKGROUND
+        ========================================================= */
+
+        .tech-network {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            overflow: hidden;
+
+            opacity: .28;
+        }
+
+
+        .network-line {
+
+            position: absolute;
+
+            height: 1px;
+
+            background:
+                rgba(113,196,239,.12);
+
+            transform-origin:
+                left center;
+        }
+
+
+        .network-line.green {
+
+            background:
+                rgba(153,194,77,.08);
+        }
+
+
+        .network-line.line-a {
+
+            width: 70vw;
+
+            left: -12vw;
+
+            top: 31%;
+
+            transform:
+                rotate(-3deg);
+        }
+
+
+        .network-line.line-b {
+
+            width: 64vw;
+
+            right: -12vw;
+
+            top: 57%;
+
+            transform:
+                rotate(3deg);
+        }
+
+
+        .network-line.line-c {
+
+            width: 72vw;
+
+            left: -15vw;
+
+            top: 81%;
+
+            transform:
+                rotate(-2deg);
+        }
+
+
+        /* =========================================================
+           MOVING SIGNAL
+        ========================================================= */
+
+        .signal {
+
+            position: absolute;
+
+            width: 34px;
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(113,196,239,.75),
+                    transparent
+                );
+
+            box-shadow:
+                0 0 7px rgba(113,196,239,.35);
+
+            animation:
+                dataSignal 10s linear infinite;
+        }
+
+
+        .signal.green {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(153,194,77,.65),
+                    transparent
+                );
+
+            box-shadow:
+                0 0 7px rgba(153,194,77,.3);
+        }
+
+
+        .signal.s1 {
+
+            top: 31%;
+
+            left: -5%;
+        }
+
+
+        .signal.s2 {
+
+            top: 57%;
+
+            left: -10%;
+
+            animation-delay:
+                3s;
+        }
+
+
+        .signal.s3 {
+
+            top: 81%;
+
+            left: -8%;
+
+            animation-delay:
+                6s;
+        }
+
+
+        @keyframes dataSignal {
+
+            0% {
+
+                transform:
+                    translateX(0);
+
+                opacity: 0;
+            }
+
+
+            10% {
+
+                opacity: .65;
+            }
+
+
+            75% {
+
+                opacity: .5;
+            }
+
+
+            100% {
+
+                transform:
+                    translateX(120vw);
+
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================================
+           MAIN CONTAINER
+        ========================================================= */
+
+        .container {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 1200px;
+
+            margin:
+                20px auto 70px;
+
+            padding:
+                0 25px;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .header-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            margin-bottom: 28px;
+        }
+
+
+        .page-title h1 {
+
+            font-size: 30px;
+
+            font-weight: 700;
+
+            letter-spacing: -1px;
+
+            color: #fffefb;
+
+            margin-bottom: 7px;
+        }
+
+
+        .page-title p {
+
+            color: #8f8e8b;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           EXPORT
+        ========================================================= */
+
+        .export-wrapper {
+
+            position: relative;
+
+            display: inline-block;
+        }
+
+
+        .btn-export {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background:
+                rgba(59,60,61,.75);
+
+            color: #71c4ef;
+
+            border:
+                1px solid rgba(182,204,216,.55);
+
+            padding:
+                10px 15px;
+
+            border-radius: 9px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background .25s ease,
+                border-color .25s ease;
+        }
+
+
+        .btn-export:hover {
+
+            background:
+                rgba(113,196,239,.08);
+
+            border-color:
+                #71c4ef;
+        }
+
+
+        .export-icon {
+
+            width: 15px;
+
+            height: 15px;
+
+            stroke: currentColor;
+
+            stroke-width: 1.7;
+
+            fill: none;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        .export-dropdown {
+
+            display: none;
+
+            position: absolute;
+
+            right: 0;
+
+            top: 46px;
+
+            min-width: 160px;
+
+            background:
+                rgba(59,60,61,.97);
+
+            border:
+                1px solid rgba(182,204,216,.55);
+
+            border-radius: 10px;
+
+            padding: 5px;
+
+            z-index: 20;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.35);
+        }
+
+
+        .export-dropdown a {
+
+            display: block;
+
+            padding:
+                9px 11px;
+
+            border-radius: 6px;
+
+            color: #d9d8d5;
+
+            font-size: 11px;
+        }
+
+
+        .export-dropdown a:hover {
+
+            background:
+                rgba(113,196,239,.09);
+
+            color: #71c4ef;
+        }
+
+
+        .export-wrapper:hover
+        .export-dropdown {
+
+            display: block;
+        }
+
+
+        /* =========================================================
+           KPI GRID
+        ========================================================= */
+
+        .kpi-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .kpi-card {
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(66,67,68,.86),
+                    rgba(53,54,55,.82)
+                );
+
+            border:
+                1px solid rgba(182,204,216,.40);
+
+            padding:
+                18px 18px 17px;
+
+            border-radius: 13px;
+
+            overflow: hidden;
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease;
+        }
+
+
+        .kpi-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+
+            height: 100px;
+
+            right: -60px;
+
+            bottom: -65px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(113,196,239,.04);
+
+            pointer-events: none;
+        }
+
+
+        .kpi-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(113,196,239,.65);
+        }
+
+
+        /* =========================================================
+           KPI ICON
+        ========================================================= */
+
+        .card-icon-wrap {
+
+            width: 34px;
+
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background:
+                rgba(113,196,239,.07);
+
+            border:
+                1px solid rgba(113,196,239,.18);
+
+            margin-bottom: 14px;
+        }
+
+
+        .card-icon {
+
+            width: 17px;
+
+            height: 17px;
+
+            stroke: #71c4ef;
+
+            stroke-width: 1.55;
+
+            fill: none;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        /* =========================================================
+           KPI TEXT
+        ========================================================= */
+
+        .kpi-label {
+
+            color: #969592;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .9px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .kpi-value {
+
+            font-family:
+                'Space Grotesk',
+                sans-serif;
+
+            font-size: 24px;
+
+            font-weight: 600;
+
+            letter-spacing: -.5px;
+
+            color: #fffefb;
+        }
+
+
+        .kpi-sub {
+
+            color: #6f6e6b;
+
+            font-size: 9px;
+
+            margin-top: 4px;
+        }
+
+
+        .green {
+
+            color: #72c995;
+        }
+
+
+        .red {
+
+            color: #e98989;
+        }
+
+
+        .orange {
+
+            color: #e4ad6b;
+        }
+
+
+        /* =========================================================
+           FILTER TOOLBAR
+        ========================================================= */
+
+        .filter-toolbar {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr;
+
+            gap: 10px;
+
+            background:
+                rgba(59,60,61,.70);
+
+            border:
+                1px solid rgba(182,204,216,.35);
+
+            padding: 10px;
+
+            border-radius: 12px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .filter-field {
+
+            position: relative;
+        }
+
+
+        .filter-icon {
+
+            position: absolute;
+
+            left: 12px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            width: 14px;
+
+            height: 14px;
+
+            stroke: #777674;
+
+            stroke-width: 1.6;
+
+            fill: none;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+
+            pointer-events: none;
+        }
+
+
+        .filter-toolbar input,
+        .filter-toolbar select {
+
+            width: 100%;
+
+            background:
+                rgba(29,28,28,.75);
+
+            border:
+                1px solid rgba(182,204,216,.25);
+
+            color: #dcdad7;
+
+            padding:
+                10px 13px;
+
+            border-radius: 8px;
+
+            font-family:
+                'Inter',
+                sans-serif;
+
+            font-size: 11px;
+
+            outline: none;
+
+            transition:
+                border-color .25s ease,
+                background .25s ease;
+        }
+
+
+        .filter-toolbar input {
+
+            padding-left: 36px;
+        }
+
+
+        .filter-toolbar select {
+
+            cursor: pointer;
+        }
+
+
+        .filter-toolbar input::placeholder {
+
+            color: #6f6e6c;
+        }
+
+
+        .filter-toolbar input:focus,
+        .filter-toolbar select:focus {
+
+            border-color:
+                rgba(113,196,239,.65);
+
+            background:
+                rgba(29,28,28,.95);
+        }
+
+
+        /* =========================================================
+           TABLE
+        ========================================================= */
+
+        .table-container {
+
+            background:
+                rgba(59,60,61,.72);
+
+            border:
+                1px solid rgba(182,204,216,.38);
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+
+        .table-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                14px 18px;
+
+            border-bottom:
+                1px solid rgba(182,204,216,.15);
+        }
+
+
+        .table-title {
+
+            font-family:
+                'Space Grotesk',
+                sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #e9e8e5;
+        }
+
+
+        .table-count {
+
+            color: #777674;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .7px;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            text-align: left;
+        }
+
+
+        th {
+
+            background:
+                rgba(29,28,28,.48);
+
+            color: #777674;
+
+            font-size: 8px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: .9px;
+
+            padding:
+                12px 18px;
+
+            border-bottom:
+                1px solid rgba(182,204,216,.14);
+        }
+
+
+        td {
+
+            padding:
+                14px 18px;
+
+            font-size: 11px;
+
+            color: #d1cfcc;
+
+            border-bottom:
+                1px solid rgba(182,204,216,.07);
+        }
+
+
+        tbody tr {
+
+            transition:
+                background .2s ease;
+        }
+
+
+        tbody tr:hover {
+
+            background:
+                rgba(113,196,239,.035);
+        }
+
+
+        tbody tr:last-child td {
+
+            border-bottom: none;
+        }
+
+
+        /* =========================================================
+           ASSET CODE
+        ========================================================= */
+
+        .code-tag {
+
+            color: #71c4ef;
+
+            font-family:
+                'Space Grotesk',
+                sans-serif;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            letter-spacing: .3px;
+        }
+
+
+        /* =========================================================
+           STATUS
+        ========================================================= */
+
+        .status-wrapper {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+
+        .status-dot {
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            flex-shrink: 0;
+        }
+
+
+        .status-dot.green {
+
+            background: #72c995;
+
+            box-shadow:
+                0 0 7px rgba(114,201,149,.65);
+        }
+
+
+        .status-dot.orange {
+
+            background: #e4ad6b;
+
+            box-shadow:
+                0 0 7px rgba(228,173,107,.55);
+        }
+
+
+        .status-text {
+
+            color: #aaa9a6;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           LAST UPDATE
+        ========================================================= */
+
+        .last-update {
+
+            color: #777674;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           TELEMETRY BUTTON
+        ========================================================= */
+
+        .btn-telemetry {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            background: transparent;
+
+            border:
+                1px solid rgba(182,204,216,.30);
+
+            color: #71c4ef;
+
+            padding:
+                6px 10px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            transition:
+                background .25s ease,
+                border-color .25s ease;
+        }
+
+
+        .btn-telemetry:hover {
+
+            background:
+                rgba(113,196,239,.08);
+
+            border-color:
+                rgba(113,196,239,.65);
+        }
+
+
+        .telemetry-icon {
+
+            width: 12px;
+
+            height: 12px;
+
+            stroke: currentColor;
+
+            stroke-width: 1.7;
+
+            fill: none;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .site-footer {
+
+            position: relative;
+
+            width: 100%;
+
+            border-top:
+                1px solid rgba(182,204,216,.22);
+
+            padding:
+                28px 5%;
+
+            z-index: 5;
+
+            margin-top: 50px;
+
+            background:
+                #1d1c1c;
+        }
+
+
+        .footer-inner {
+
+            max-width: 1250px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .footer-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #deddda;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        .footer-dot {
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #71c4ef;
+
+            box-shadow:
+                0 0 8px rgba(113,196,239,.6);
+        }
+
+
+        .footer-copy,
+        .footer-year {
+
+            color: #777573;
+
+            font-size: 9px;
+
+            letter-spacing: .3px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+
+            .kpi-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .header-row {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 18px;
+            }
+
+
+            .filter-toolbar {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding-top:
+                    110px;
+            }
+
+
+            .navbar-glass {
+
+                width: 94%;
+
+                padding:
+                    12px 18px;
+            }
+
+
+            .kpi-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .container {
+
+                padding:
+                    0 16px;
+            }
+
+
+            .page-title h1 {
+
+                font-size: 25px;
+            }
+
+
+            .table-container {
+
+                overflow-x: auto;
+            }
+
+
+            table {
+
+                min-width:
+                    850px;
+            }
+
+
+            .footer-inner {
+
+                flex-direction: column;
+
+                gap: 12px;
+
+                text-align: center;
+            }
+
+
+            .welcome-user {
+
+                font-size: 10px;
+            }
+
+
+            .logout-btn {
+
+                padding:
+                    7px 10px;
+
+                font-size: 9px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
+
+    <header class="navbar-glass">
+
+
+        <a
+            href="index.html"
+            class="nav-brand"
+        >
+
+            <span class="logo-dot"></span>
+
+            <span>
+                FlowChain
+            </span>
+
+        </a>
+
+
+        <nav>
+
+            <ul class="nav-links">
+
+
+                <li>
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="inventory.html"
+                        class="active"
+                    >
+                        Operations
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="suppliers.html">
+                        Suppliers
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="contact.html">
+                        Support
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </nav>
+
+
+        <!--
+            THIS AREA WILL AUTOMATICALLY CHANGE
+            TO:
+
+            Welcome, Dana Alhazmi    Logout
+
+            OR THE CURRENT EMPLOYEE NAME.
+        -->
+
+        <div
+            class="nav-actions"
+            id="navActions"
+        >
+
+            <a
+                href="login.html"
+                class="login"
+            >
+                Login
+            </a>
+
+
+            <a
+                href="register.html"
+                class="access"
+            >
+                REQUEST ACCESS
+            </a>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =========================================================
+         BACKGROUND
+    ========================================================= -->
+
+    <div class="tech-network">
+
+        <div class="network-line line-a"></div>
+
+        <div class="network-line line-b green"></div>
+
+        <div class="network-line line-c"></div>
+
+        <div class="signal s1"></div>
+
+        <div class="signal green s2"></div>
+
+        <div class="signal s3"></div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================= -->
+
+    <main class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="header-row">
+
+
+            <div class="page-title">
+
+                <h1>
+                    Asset Intelligence
+                </h1>
+
+
+                <p>
+                    Real-time visibility across industrial equipment and telemetry.
+                </p>
+
+            </div>
+
+
+
+            <!-- EXPORT -->
+
+            <div class="export-wrapper">
+
+
+                <button
+                    class="btn-export"
+                    type="button"
+                >
+
+                    <svg
+                        class="export-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path d="M12 3v12"></path>
+
+                        <path d="M7 10l5 5 5-5"></path>
+
+                        <path d="M5 21h14"></path>
+
+                    </svg>
+
+
+                    Export Report
+
+                </button>
+
+
+
+                <div class="export-dropdown">
+
+
+                    <a
+                        href="#"
+                        onclick="alert('Downloading PDF Report...'); return false;"
+                    >
+                        Export as PDF
+                    </a>
+
+
+                    <a
+                        href="#"
+                        onclick="alert('Downloading Excel Sheet...'); return false;"
+                    >
+                        Export as Excel
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             KPI
+        ====================================================== -->
+
+        <section class="kpi-grid">
+
+
+            <!-- ASSETS -->
+
+            <div class="kpi-card">
+
+
+                <div class="card-icon-wrap">
+
+                    <svg
+                        class="card-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <rect
+                            x="4"
+                            y="4"
+                            width="16"
+                            height="16"
+                            rx="3"
+                        ></rect>
+
+                        <path d="M8 9h8"></path>
+
+                        <path d="M8 13h5"></path>
+
+                        <path d="M8 17h3"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="kpi-label">
+                    Monitored Assets
+                </div>
+
+
+                <div class="kpi-value green">
+                    200+
+                </div>
+
+
+                <div class="kpi-sub">
+                    Across active hubs
+                </div>
+
+
+            </div>
+
+
+
+            <!-- EFFICIENCY -->
+
+            <div class="kpi-card">
+
+
+                <div class="card-icon-wrap">
+
+                    <svg
+                        class="card-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path d="M4 16l5-5 4 3 7-8"></path>
+
+                        <path d="M15 6h5v5"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="kpi-label">
+                    Operational Efficiency
+                </div>
+
+
+                <div class="kpi-value">
+                    99.8%
+                </div>
+
+
+                <div class="kpi-sub">
+                    Current telemetry performance
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ALERTS -->
+
+            <div class="kpi-card">
+
+
+                <div class="card-icon-wrap">
+
+                    <svg
+                        class="card-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
+
+                        <path d="M10 21h4"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="kpi-label">
+                    Critical Alerts
+                </div>
+
+
+                <div class="kpi-value red">
+                    02
+                </div>
+
+
+                <div class="kpi-sub">
+                    Require attention
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MAINTENANCE -->
+
+            <div class="kpi-card">
+
+
+                <div class="card-icon-wrap">
+
+                    <svg
+                        class="card-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0L21 6"></path>
+
+                        <path d="M20 4l-4 4"></path>
+
+                        <path d="M3.5 20.5a2.1 2.1 0 0 0 3 0l8.8-8.8-3-3-8.8 8.8a2.1 2.1 0 0 0 0 3z"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="kpi-label">
+                    Maintenance Due
+                </div>
+
+
+                <div class="kpi-value orange">
+                    05
+                </div>
+
+
+                <div class="kpi-sub">
+                    Routine intervention
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FILTERS
+        ====================================================== -->
+
+        <section class="filter-toolbar">
+
+
+            <!-- SEARCH -->
+
+            <div class="filter-field">
+
+
+                <svg
+                    class="filter-icon"
+                    viewBox="0 0 24 24"
+                >
+
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7"
+                    ></circle>
+
+                    <path d="m20 20-4-4"></path>
+
+                </svg>
+
+
+                <input
+                    type="text"
+                    placeholder="Search equipment or asset code..."
+                >
+
+
+            </div>
+
+
+
+            <!-- HUB -->
+
+            <div class="filter-field">
+
+
+                <select>
+
+                    <option value="">
+                        All Hub Locations
+                    </option>
+
+                    <option>
+                        Yanbu Hub - Zone A
+                    </option>
+
+                    <option>
+                        Jubail Hub - Zone B
+                    </option>
+
+                    <option>
+                        Riyadh Hub - Zone C
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+
+            <!-- STATUS -->
+
+            <div class="filter-field">
+
+
+                <select>
+
+                    <option value="">
+                        All Telemetry Status
+                    </option>
+
+                    <option>
+                        Active & Stable
+                    </option>
+
+                    <option>
+                        Routine Check Due
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TABLE
+        ====================================================== -->
+
+        <section class="table-container">
+
+
+            <div class="table-header">
+
+
+                <div class="table-title">
+                    Monitored Equipment
+                </div>
+
+
+                <div class="table-count">
+                    3 Active Records
+                </div>
+
+
+            </div>
+
+
+
+            <table>
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Asset Code
+                        </th>
+
+                        <th>
+                            Equipment
+                        </th>
+
+                        <th>
+                            Hub Location
+                        </th>
+
+                        <th>
+                            Telemetry
+                        </th>
+
+                        <th>
+                            Last Update
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <tbody>
+
+
+                    <!-- ROW 1 -->
+
+                    <tr>
+
+
+                        <td>
+
+                            <span class="code-tag">
+                                #EQ-9042
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            Heavy Hydraulic Crane X-8
+                        </td>
+
+
+                        <td>
+                            Yanbu Hub - Zone A
+                        </td>
+
+
+                        <td>
+
+                            <span class="status-wrapper">
+
+                                <span class="status-dot green"></span>
+
+                                <span class="status-text">
+                                    Active & Stable
+                                </span>
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="last-update">
+                                2 min ago
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <a
+                                href="asset-details.html?id=EQ-9042"
+                                class="btn-telemetry"
+                            >
+
+                                View
+
+                                <svg
+                                    class="telemetry-icon"
+                                    viewBox="0 0 24 24"
+                                >
+
+                                    <path d="M5 12h14"></path>
+
+                                    <path d="m13 6 6 6-6 6"></path>
+
+                                </svg>
+
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+
+
+
+                    <!-- ROW 2 -->
+
+                    <tr>
+
+
+                        <td>
+
+                            <span class="code-tag">
+                                #EQ-1105
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            Industrial Conveyor Belt Pro
+                        </td>
+
+
+                        <td>
+                            Jubail Hub - Zone B
+                        </td>
+
+
+                        <td>
+
+                            <span class="status-wrapper">
+
+                                <span class="status-dot orange"></span>
+
+                                <span class="status-text">
+                                    Routine Check Due
+                                </span>
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="last-update">
+                                8 min ago
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <a
+                                href="asset-details.html?id=EQ-1105"
+                                class="btn-telemetry"
+                            >
+
+                                View
+
+                                <svg
+                                    class="telemetry-icon"
+                                    viewBox="0 0 24 24"
+                                >
+
+                                    <path d="M5 12h14"></path>
+
+                                    <path d="m13 6 6 6-6 6"></path>
+
+                                </svg>
+
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+
+
+
+                    <!-- ROW 3 -->
+
+                    <tr>
+
+
+                        <td>
+
+                            <span class="code-tag">
+                                #EQ-3321
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            Petrochemical Turbine Core
+                        </td>
+
+
+                        <td>
+                            Dammam Logistics Park
+                        </td>
+
+
+                        <td>
+
+                            <span class="status-wrapper">
+
+                                <span class="status-dot green"></span>
+
+                                <span class="status-text">
+                                    Active & Stable
+                                </span>
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="last-update">
+                                1 min ago
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <a
+                                href="asset-details.html?id=EQ-3321"
+                                class="btn-telemetry"
+                            >
+
+                                View
+
+                                <svg
+                                    class="telemetry-icon"
+                                    viewBox="0 0 24 24"
+                                >
+
+                                    <path d="M5 12h14"></path>
+
+                                    <path d="m13 6 6 6-6 6"></path>
+
+                                </svg>
+
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-inner">
+
+
+            <div class="footer-brand">
+
+                <span class="footer-dot"></span>
+
+                <span>
+                    FlowChain
+                </span>
+
+            </div>
+
+
+            <div class="footer-copy">
+                Industrial Supply Chain Intelligence
+            </div>
+
+
+            <div class="footer-year">
+                © 2026 FlowChain
+            </div>
+
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         FLOWCHAIN LOGIN / USER NAVIGATION
+    ========================================================= -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                const navActions =
+                    document.getElementById(
+                        "navActions"
+                    );
+
+
+                if (!navActions) {
+                    return;
+                }
+
+
+                const storedUser =
+                    localStorage.getItem(
+                        "flowchainUser"
+                    );
+
+
+                /*
+                 * If nobody is logged in,
+                 * keep the normal Login /
+                 * Request Access buttons.
+                 */
+
+                if (!storedUser) {
+                    return;
+                }
+
+
+                let user;
+
+
+                try {
+
+                    user =
+                        JSON.parse(
+                            storedUser
+                        );
+
+                } catch (error) {
+
+                    localStorage.removeItem(
+                        "flowchainUser"
+                    );
+
+                    localStorage.removeItem(
+                        "flowchainLoggedIn"
+                    );
+
+                    return;
+                }
+
+
+                /*
+                 * Make sure the saved user
+                 * actually contains a name.
+                 */
+
+                if (
+                    !user ||
+                    !user.name
+                ) {
+
+                    return;
+                }
+
+
+                /*
+                 * Replace Login /
+                 * Request Access with:
+                 *
+                 * Welcome, User Name
+                 * Logout
+                 */
+
+                navActions.innerHTML = `
+
+                    <div class="welcome-user">
+
+                        <span class="welcome-text">
+                            Welcome,
+                        </span>
+
+                        <span class="employee-name">
+                            ${user.name}
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="logout-btn"
+                        onclick="flowchainLogout()"
+                    >
+                        Logout
+                    </button>
+
+                `;
+
+            }
+        );
+
+
+
+        /* =========================================================
+           LOGOUT
+        ========================================================= */
+
+        function flowchainLogout() {
+
+
+            /*
+             * Delete the logged-in
+             * employee information.
+             */
+
+            localStorage.removeItem(
+                "flowchainUser"
+            );
+
+
+            localStorage.removeItem(
+                "flowchainLoggedIn"
+            );
+
+
+            /*
+             * Return to Login.
+             */
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

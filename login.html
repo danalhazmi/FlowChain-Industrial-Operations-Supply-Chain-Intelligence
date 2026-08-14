@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Login | FlowChain</title>
+
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap"
+    rel="stylesheet"
+>
+
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #1d1c1c;
+    color: #fffefb;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 130px;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar-glass {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 1250px;
+
+    padding: 14px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(59, 60, 61, .8);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid #b6ccd8;
+
+    border-radius: 100px;
+
+    z-index: 1000;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: 'Space Grotesk', sans-serif;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #fffefb;
+
+    white-space: nowrap;
+}
+
+.nav-brand .logo-dot {
+    width: 9px;
+    height: 9px;
+
+    background: #71c4ef;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 10px rgba(113, 196, 239, .7);
+
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    color: #c4c4c2;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    transition:
+        color .25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+}
+
+.nav-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.login {
+    color: #ffffff;
+
+    font-size: 11px;
+
+    padding: 8px 12px;
+}
+
+.login.active {
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+.access {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 9px 17px;
+
+    border-radius: 50px;
+
+    background: #71c4ef;
+
+    color: #151515;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.access:hover {
+    transform:
+        translateY(-1px);
+
+    background:
+        #86cff2;
+}
+
+
+/* =========================
+   BACKGROUND NETWORK
+========================= */
+
+.tech-network {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    overflow: hidden;
+
+    opacity: .40;
+}
+
+.network-line {
+    position: absolute;
+
+    height: 1px;
+
+    background:
+        rgba(113,196,239,.13);
+
+    transform-origin:
+        left center;
+}
+
+.network-line.green {
+    background:
+        rgba(153,194,77,.11);
+}
+
+.network-line.line-a {
+    width: 70vw;
+
+    left: -12vw;
+
+    top: 31%;
+
+    transform:
+        rotate(-3deg);
+}
+
+.network-line.line-b {
+    width: 64vw;
+
+    right: -12vw;
+
+    top: 57%;
+
+    transform:
+        rotate(3deg);
+}
+
+.network-line.line-c {
+    width: 72vw;
+
+    left: -15vw;
+
+    top: 81%;
+
+    transform:
+        rotate(-2deg);
+}
+
+.signal {
+    position: absolute;
+
+    width: 34px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(113,196,239,.9),
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px rgba(113,196,239,.55);
+
+    animation:
+        dataSignal 8s linear infinite;
+}
+
+.signal.green {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(153,194,77,.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px rgba(153,194,77,.45);
+}
+
+.signal.s1 {
+    top: 31%;
+    left: -5%;
+}
+
+.signal.s2 {
+    top: 57%;
+    left: -10%;
+
+    animation-delay:
+        3s;
+}
+
+.signal.s3 {
+    top: 81%;
+    left: -8%;
+
+    animation-delay:
+        5.5s;
+}
+
+@keyframes dataSignal {
+
+    0% {
+        transform:
+            translateX(0);
+
+        opacity: 0;
+    }
+
+    8% {
+        opacity: .75;
+    }
+
+    75% {
+        opacity: .65;
+    }
+
+    100% {
+        transform:
+            translateX(120vw);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================
+   LOGIN AREA
+========================= */
+
+.login-wrapper {
+    position: relative;
+
+    z-index: 2;
+
+    flex: 1;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding:
+        45px 20px 70px;
+}
+
+.login-card {
+    width: 100%;
+
+    max-width: 410px;
+
+    background:
+        rgba(59, 60, 61, .92);
+
+    border:
+        1px solid rgba(182, 204, 216, .65);
+
+    border-radius: 20px;
+
+    padding: 38px;
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, .55);
+}
+
+.logo-area {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 28px;
+
+    font-family:
+        'Space Grotesk',
+        sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #fffefb;
+}
+
+.logo-area .logo-dot {
+    width: 10px;
+
+    height: 10px;
+
+    background:
+        #71c4ef;
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        0 0 10px rgba(113, 196, 239, .8);
+}
+
+.login-card h2 {
+    text-align: center;
+
+    font-size: 23px;
+
+    line-height: 1.2;
+
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+
+    color: #aaa8a5;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+#error-msg {
+    display: none;
+
+    background:
+        rgba(239, 68, 68, .08);
+
+    border:
+        1px solid rgba(239, 68, 68, .35);
+
+    color:
+        #ef4444;
+
+    border-radius:
+        10px;
+
+    padding:
+        11px 13px;
+
+    margin-bottom:
+        18px;
+
+    text-align:
+        center;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+}
+
+#error-msg.approval-message {
+    color:
+        #f59e0b;
+
+    background:
+        rgba(245,158,11,.08);
+
+    border-color:
+        rgba(245,158,11,.35);
+}
+
+#error-msg.rejected-message {
+    color:
+        #ef4444;
+
+    background:
+        rgba(239,68,68,.08);
+
+    border-color:
+        rgba(239,68,68,.35);
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    margin-bottom: 19px;
+}
+
+.form-group label {
+    display: block;
+
+    color: #cccbc8;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+
+    height: 46px;
+
+    background:
+        #1d1c1c;
+
+    border:
+        1px solid rgba(182, 204, 216, .45);
+
+    border-radius:
+        10px;
+
+    padding:
+        0 14px;
+
+    color:
+        #fffefb;
+
+    font-family:
+        'Inter',
+        sans-serif;
+
+    font-size:
+        13px;
+
+    outline:
+        none;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+input::placeholder {
+    color:
+        #777573;
+}
+
+input:focus {
+    border-color:
+        #71c4ef;
+
+    box-shadow:
+        0 0 0 2px rgba(113, 196, 239, .08);
+}
+
+input.error-input {
+    border-color:
+        #ef4444 !important;
+
+    box-shadow:
+        0 0 0 2px rgba(239, 68, 68, .08);
+}
+
+.input-box {
+    position:
+        relative;
+
+    width:
+        100%;
+}
+
+.input-box input {
+    padding-right:
+        45px;
+}
+
+.toggle-password {
+    position:
+        absolute;
+
+    right:
+        13px;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        25px;
+
+    height:
+        25px;
+
+    padding:
+        0;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #aaa8a5;
+
+    cursor:
+        pointer;
+}
+
+.toggle-password:hover {
+    color:
+        #71c4ef;
+}
+
+.toggle-password svg {
+    width:
+        17px;
+
+    height:
+        17px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn-submit {
+    width:
+        100%;
+
+    height:
+        46px;
+
+    border:
+        none;
+
+    border-radius:
+        50px;
+
+    background:
+        #71c4ef;
+
+    color:
+        #151515;
+
+    font-family:
+        'Inter',
+        sans-serif;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    margin-top:
+        3px;
+
+    box-shadow:
+        0 0 18px rgba(113,196,239,.22);
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.btn-submit:hover {
+    transform:
+        translateY(-1px);
+
+    background:
+        #86cff2;
+
+    box-shadow:
+        0 0 24px rgba(113,196,239,.3);
+}
+
+.btn-submit:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+.back-link {
+    display:
+        block;
+
+    text-align:
+        center;
+
+    margin-top:
+        21px;
+
+    color:
+        #aaa8a5;
+
+    font-size:
+        11px;
+
+    transition:
+        color .25s ease;
+}
+
+.back-link:hover {
+    color:
+        #fffefb;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+    position:
+        relative;
+
+    width:
+        100%;
+
+    border-top:
+        1px solid rgba(182, 204, 216, .22);
+
+    padding:
+        28px 5%;
+
+    background:
+        #1d1c1c;
+
+    z-index:
+        5;
+}
+
+.footer-inner {
+    width:
+        100%;
+
+    max-width:
+        1250px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+}
+
+.footer-brand {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    color:
+        #deddda;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+}
+
+.footer-dot {
+    width:
+        7px;
+
+    height:
+        7px;
+
+    border-radius:
+        50%;
+
+    background:
+        #71c4ef;
+
+    box-shadow:
+        0 0 8px rgba(113,196,239,.6);
+}
+
+.footer-copy,
+.footer-year {
+    color:
+        #777573;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        .3px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display:
+            none;
+    }
+
+    .navbar-glass {
+        width:
+            92%;
+
+        padding:
+            13px 20px;
+    }
+
+    .login-card {
+        max-width:
+            400px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding-top:
+            110px;
+    }
+
+    .navbar-glass {
+        top:
+            18px;
+    }
+
+    .nav-actions .login {
+        display:
+            none;
+    }
+
+    .login-wrapper {
+        padding:
+            35px 16px 55px;
+    }
+
+    .login-card {
+        padding:
+            30px 24px;
+    }
+
+    .footer-inner {
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+
+        text-align:
+            center;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- BACKGROUND NETWORK -->
+
+<div class="tech-network">
+
+    <div class="network-line line-a"></div>
+
+    <div class="network-line line-b green"></div>
+
+    <div class="network-line line-c"></div>
+
+    <div class="signal s1"></div>
+
+    <div class="signal s2 green"></div>
+
+    <div class="signal s3"></div>
+
+</div>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar-glass">
+
+    <a
+        href="index.html"
+        class="nav-brand"
+    >
+
+        <span class="logo-dot"></span>
+
+        <span>
+            FlowChain
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="inventory.html">
+                    Operations
+                </a>
+            </li>
+
+            <li>
+                <a href="suppliers.html">
+                    Suppliers
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Support
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+        <a
+            href="login.html"
+            class="login active"
+        >
+            Login
+        </a>
+
+        <a
+            href="register.html"
+            class="access"
+        >
+            REQUEST ACCESS
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- LOGIN -->
+
+<main class="login-wrapper">
+
+    <div class="login-card">
+
+
+        <div class="logo-area">
+
+            <span class="logo-dot"></span>
+
+            <span>
+                FlowChain
+            </span>
+
+        </div>
+
+
+        <h2>
+            Welcome Back
+        </h2>
+
+
+        <p class="subtitle">
+            Enter your authorized enterprise credentials
+        </p>
+
+
+        <div id="error-msg">
+            Invalid email address or password. Please try again.
+        </div>
+
+
+        <form
+            id="login-form"
+            onsubmit="handleLogin(event)"
+        >
+
+            <div class="form-group">
+
+                <label for="email-input">
+                    Enterprise Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email-input"
+                    placeholder="name@flowchain.com"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        onclick="togglePassword()"
+                        aria-label="Show or hide password"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <path
+                                d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                            ></path>
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="3"
+                            ></circle>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn-submit"
+            >
+                Sign In
+            </button>
+
+        </form>
+
+
+        <a
+            href="index.html"
+            class="back-link"
+        >
+            ← Back to Home
+        </a>
+
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+
+            <span class="footer-dot"></span>
+
+            <span>
+                FlowChain
+            </span>
+
+        </div>
+
+
+        <div class="footer-copy">
+            Industrial Supply Chain Intelligence
+        </div>
+
+
+        <div class="footer-year">
+            © 2026 FlowChain
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- FLOWCHAIN AUTHENTICATION SYSTEM -->
+
+<script>
+
+/* =========================================================
+   PRE-AUTHORIZED FLOWCHAIN USERS
+========================================================= */
+
+const FLOWCHAIN_USERS = {
+
+    "dana.alhazmi@flowchain.admin.sa": {
+
+        password:
+            "2026",
+
+        name:
+            "Dana Alhazmi",
+
+        fullName:
+            "Dana Alhazmi",
+
+        role:
+            "Administrator",
+
+        department:
+            "Administration",
+
+        accountType:
+            "admin"
+
+    },
+
+
+    "majed.alsubaie@flowchain.emp.sa": {
+
+        password:
+            "2026",
+
+        name:
+            "Majed Alsubaie",
+
+        fullName:
+            "Majed Alsubaie",
+
+        role:
+            "Operations & Maintenance Employee",
+
+        department:
+            "Operations & Maintenance",
+
+        accountType:
+            "employee"
+
+    },
+
+
+    "muneera.alshehri@flowchain.emp.sa": {
+
+        password:
+            "2026",
+
+        name:
+            "Muneera Alshehri",
+
+        fullName:
+            "Muneera Alshehri",
+
+        role:
+            "Supply Chain Employee",
+
+        department:
+            "Supply Chain",
+
+        accountType:
+            "employee"
+
+    },
+
+
+    "turki.alghamdi@flowchain.emp.sa": {
+
+        password:
+            "2026",
+
+        name:
+            "Turki Alghamdi",
+
+        fullName:
+            "Turki Alghamdi",
+
+        role:
+            "Information Technology Employee",
+
+        department:
+            "Information Technology",
+
+        accountType:
+            "employee"
+
+    },
+
+
+    "jawaher.alotaibi@flowchain.emp.sa": {
+
+        password:
+            "2026",
+
+        name:
+            "Jawaher Alotaibi",
+
+        fullName:
+            "Jawaher Alotaibi",
+
+        role:
+            "Employee — Under Review",
+
+        department:
+            "Pending Review",
+
+        accountType:
+            "employee"
+
+    },
+
+
+    "fahad.alqarni@flowchain.emp.sa": {
+
+        password:
+            "2026",
+
+        name:
+            "Fahad Alqarni",
+
+        fullName:
+            "Fahad Alqarni",
+
+        role:
+            "Senior Management Employee",
+
+        department:
+            "Senior Management",
+
+        accountType:
+            "employee"
+
+    }
+
+};
+
+
+/* =========================================================
+   ACCESS REQUEST KEY
+========================================================= */
+
+const FLOWCHAIN_REQUESTS_KEY =
+    "flowchainAccessRequests";
+
+
+/* =========================================================
+   GET ACCESS REQUESTS
+========================================================= */
+
+function getAccessRequests() {
+
+    const stored =
+        localStorage.getItem(
+            FLOWCHAIN_REQUESTS_KEY
+        );
+
+
+    if (!stored) {
+
+        return [];
+
+    }
+
+
+    try {
+
+        const requests =
+            JSON.parse(
+                stored
+            );
+
+
+        return Array.isArray(
+            requests
+        )
+            ? requests
+            : [];
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================================
+   FIND REGISTERED USER REQUEST
+========================================================= */
+
+function findAccessRequest(
+    email
+) {
+
+    const requests =
+        getAccessRequests();
+
+
+    return requests.find(
+        request =>
+            request.email ===
+            email
+    );
+
+}
+
+
+/* =========================================================
+   CREATE SESSION
+========================================================= */
+
+function createUserSession(
+    email,
+    user
+) {
+
+    const loggedInUser = {
+
+        email:
+            email,
+
+        name:
+            user.name,
+
+        fullName:
+            user.fullName,
+
+        role:
+            user.role,
+
+        department:
+            user.department,
+
+        accountType:
+            user.accountType,
+
+        loginTime:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "flowchainUser",
+        JSON.stringify(
+            loggedInUser
+        )
+    );
+
+
+    localStorage.setItem(
+        "flowchainLoggedIn",
+        "true"
+    );
+
+
+    localStorage.setItem(
+        "flowchainUserName",
+        user.name
+    );
+
+
+    localStorage.setItem(
+        "flowchainAccountType",
+        user.accountType
+    );
+
+}
+
+
+/* =========================================================
+   CREATE SESSION FOR APPROVED REQUEST
+========================================================= */
+
+function createApprovedRequestSession(
+    request
+) {
+
+    const loggedInUser = {
+
+        email:
+            request.email,
+
+        name:
+            request.fullName ||
+            request.name,
+
+        fullName:
+            request.fullName ||
+            request.name,
+
+        role:
+            request.role ||
+            "Employee",
+
+        department:
+            request.department ||
+            "Pending Assignment",
+
+        accountType:
+            "employee",
+
+        requestId:
+            request.requestId,
+
+        loginTime:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "flowchainUser",
+        JSON.stringify(
+            loggedInUser
+        )
+    );
+
+
+    localStorage.setItem(
+        "flowchainLoggedIn",
+        "true"
+    );
+
+
+    localStorage.setItem(
+        "flowchainUserName",
+        loggedInUser.name
+    );
+
+
+    localStorage.setItem(
+        "flowchainAccountType",
+        "employee"
+    );
+
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+function showLoginMessage(
+    message,
+    type = "error"
+) {
+
+    const errorMessage =
+        document.getElementById(
+            "error-msg"
+        );
+
+
+    errorMessage.textContent =
+        message;
+
+
+    errorMessage.style.display =
+        "block";
+
+
+    errorMessage.classList.remove(
+        "approval-message",
+        "rejected-message"
+    );
+
+
+    if (
+        type ===
+        "pending"
+    ) {
+
+        errorMessage.classList.add(
+            "approval-message"
+        );
+
+    }
+
+
+    if (
+        type ===
+        "rejected"
+    ) {
+
+        errorMessage.classList.add(
+            "rejected-message"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   HANDLE LOGIN
+========================================================= */
+
+function handleLogin(
+    event
+) {
+
+    event.preventDefault();
+
+
+    const emailInput =
+        document.getElementById(
+            "email-input"
+        );
+
+
+    const passwordInput =
+        document.getElementById(
+            "password"
+        );
+
+
+    const email =
+        emailInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const password =
+        passwordInput.value;
+
+
+    const user =
+        FLOWCHAIN_USERS[email];
+
+
+    /* =====================================================
+       1. PRE-AUTHORIZED USERS
+    ====================================================== */
+
+    if (user) {
+
+        if (
+            user.password !==
+            password
+        ) {
+
+            showLoginMessage(
+                "Invalid email address or password. Please try again.",
+                "error"
+            );
+
+
+            emailInput.classList.add(
+                "error-input"
+            );
+
+
+            passwordInput.classList.add(
+                "error-input"
+            );
+
+
+            passwordInput.value =
+                "";
+
+
+            return;
+
+        }
+
+
+        emailInput.classList.remove(
+            "error-input"
+        );
+
+
+        passwordInput.classList.remove(
+            "error-input"
+        );
+
+
+        showLoginMessage(
+            "",
+            "error"
+        );
+
+
+        document
+            .getElementById(
+                "error-msg"
+            )
+            .style.display =
+            "none";
+
+
+        createUserSession(
+            email,
+            user
+        );
+
+
+        /* =========================
+           ADMIN
+        ========================= */
+
+        if (
+            user.accountType ===
+            "admin"
+        ) {
+
+            window.location.href =
+                "admin-dashboard.html";
+
+            return;
+
+        }
+
+
+        /* =========================
+           NORMAL EMPLOYEE
+        ========================= */
+
+        window.location.href =
+            "index.html";
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       2. REGISTERED USERS
+    ====================================================== */
+
+    const request =
+        findAccessRequest(
+            email
+        );
+
+
+    /*
+     * No account and no request.
+     */
+
+    if (!request) {
+
+        showLoginMessage(
+            "Invalid email address or password. Please try again.",
+            "error"
+        );
+
+
+        emailInput.classList.add(
+            "error-input"
+        );
+
+
+        passwordInput.classList.add(
+            "error-input"
+        );
+
+
+        passwordInput.value =
+            "";
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       3. CHECK REQUEST PASSWORD
+    ====================================================== */
+
+    if (
+        request.password !==
+        password
+    ) {
+
+        showLoginMessage(
+            "Invalid email address or password. Please try again.",
+            "error"
+        );
+
+
+        emailInput.classList.add(
+            "error-input"
+        );
+
+
+        passwordInput.classList.add(
+            "error-input"
+        );
+
+
+        passwordInput.value =
+            "";
+
+
+        return;
+
+    }
+
+
+    emailInput.classList.remove(
+        "error-input"
+    );
+
+
+    passwordInput.classList.remove(
+        "error-input"
+    );
+
+
+    /* =====================================================
+       4. PENDING
+    ====================================================== */
+
+    if (
+        request.status ===
+        "Pending"
+    ) {
+
+        showLoginMessage(
+            "Your access request is still under review. Please wait for administrator approval.",
+            "pending"
+        );
+
+
+        passwordInput.value =
+            "";
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       5. REJECTED
+    ====================================================== */
+
+    if (
+        request.status ===
+        "Rejected"
+    ) {
+
+        showLoginMessage(
+            "Your access request has been rejected. Please contact the FlowChain administrator.",
+            "rejected"
+        );
+
+
+        passwordInput.value =
+            "";
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       6. APPROVED
+    ====================================================== */
+
+    if (
+        request.status ===
+        "Approved"
+    ) {
+
+        createApprovedRequestSession(
+            request
+        );
+
+
+        window.location.href =
+            "index.html";
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       UNKNOWN STATUS
+    ====================================================== */
+
+    showLoginMessage(
+        "Your account status could not be verified. Please contact the administrator.",
+        "error"
+    );
+
+
+    passwordInput.value =
+        "";
+
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+========================================================= */
+
+function togglePassword() {
+
+    const passwordInput =
+        document.getElementById(
+            "password"
+        );
+
+
+    if (
+        passwordInput.type ===
+        "password"
+    ) {
+
+        passwordInput.type =
+            "text";
+
+    } else {
+
+        passwordInput.type =
+            "password";
+
+    }
+
+}
+
+
+/* =========================================================
+   CLEAR ERROR ON INPUT
+========================================================= */
+
+document
+    .getElementById(
+        "email-input"
+    )
+    .addEventListener(
+        "input",
+        function () {
+
+            this.classList.remove(
+                "error-input"
+            );
+
+
+            const errorMessage =
+                document.getElementById(
+                    "error-msg"
+                );
+
+
+            errorMessage.style.display =
+                "none";
+
+
+            errorMessage.classList.remove(
+                "approval-message",
+                "rejected-message"
+            );
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "password"
+    )
+    .addEventListener(
+        "input",
+        function () {
+
+            this.classList.remove(
+                "error-input"
+            );
+
+
+            const errorMessage =
+                document.getElementById(
+                    "error-msg"
+                );
+
+
+            errorMessage.style.display =
+                "none";
+
+
+            errorMessage.classList.remove(
+                "approval-message",
+                "rejected-message"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   CLEAN INVALID SESSION DATA
+========================================================= */
+
+if (
+    localStorage.getItem(
+        "flowchainLoggedIn"
+    ) === "true" &&
+    localStorage.getItem(
+        "flowchainUser"
+    )
+) {
+
+    try {
+
+        const existingUser =
+            JSON.parse(
+                localStorage.getItem(
+                    "flowchainUser"
+                )
+            );
+
+
+        if (
+            existingUser &&
+            existingUser.name &&
+            existingUser.email
+        ) {
+
+            localStorage.setItem(
+                "flowchainUserName",
+                existingUser.name
+            );
+
+
+            localStorage.setItem(
+                "flowchainAccountType",
+                existingUser.accountType ||
+                "employee"
+            );
+
+        }
+
+    } catch (error) {
+
+        localStorage.removeItem(
+            "flowchainUser"
+        );
+
+        localStorage.removeItem(
+            "flowchainLoggedIn"
+        );
+
+        localStorage.removeItem(
+            "flowchainUserName"
+        );
+
+        localStorage.removeItem(
+            "flowchainAccountType"
+        );
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>

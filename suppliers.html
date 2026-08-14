@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Suppliers | FlowChain</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #1d1c1c;
+    color: #fffefb;
+    font-family: 'Inter', sans-serif;
+
+    min-height: 100vh;
+
+    padding-top: 130px;
+    padding-bottom: 40px;
+
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.nav-brand {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar-glass {
+
+    position: fixed;
+
+    top: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 1250px;
+
+    padding: 14px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(59,60,61,.8);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid #b6ccd8;
+
+    border-radius: 100px;
+
+    z-index: 1000;
+}
+
+
+.nav-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #fffefb;
+
+    white-space: nowrap;
+}
+
+
+.logo-dot {
+
+    width: 9px;
+    height: 9px;
+
+    background: #71c4ef;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 10px rgba(113,196,239,.7);
+
+    flex-shrink: 0;
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    list-style: none;
+}
+
+
+.nav-links a {
+
+    color: #c4c4c2;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    transition:
+        color .25s ease;
+}
+
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    color: #ffffff;
+}
+
+
+.nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    white-space: nowrap;
+}
+
+
+.btn-login {
+
+    color: #d6d4d1;
+
+    font-size: 11px;
+
+    padding: 8px 12px;
+}
+
+
+.btn-access {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 9px 17px;
+
+    border-radius: 50px;
+
+    background: #71c4ef;
+
+    color: #151515;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+
+.btn-access:hover {
+
+    transform: translateY(-1px);
+
+    background: #86cff2;
+}
+
+
+/* =========================================================
+   LOGGED-IN USER
+========================================================= */
+
+.welcome-user {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    white-space: nowrap;
+
+    font-size: 11px;
+}
+
+
+.welcome-text {
+
+    color: #aaa8a5;
+
+    font-weight: 400;
+}
+
+
+.employee-name {
+
+    color: #71c4ef;
+
+    font-weight: 600;
+}
+
+
+.logout-btn {
+
+    border:
+        1px solid rgba(182,204,216,.45);
+
+    background:
+        rgba(29,28,28,.55);
+
+    color: #d6d4d1;
+
+    padding: 8px 13px;
+
+    border-radius: 50px;
+
+    font-family:
+        'Inter',
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+
+.logout-btn:hover {
+
+    color: #ffffff;
+
+    border-color: #71c4ef;
+
+    background:
+        rgba(113,196,239,.08);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   BACKGROUND NETWORK
+========================================================= */
+
+.tech-network {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    overflow: hidden;
+
+    opacity: .40;
+}
+
+
+.network-line {
+
+    position: absolute;
+
+    height: 1px;
+
+    background:
+        rgba(113,196,239,.13);
+
+    transform-origin:
+        left center;
+}
+
+
+.network-line.green {
+
+    background:
+        rgba(153,194,77,.11);
+}
+
+
+.network-line.line-a {
+
+    width: 70vw;
+
+    left: -12vw;
+    top: 31%;
+
+    transform:
+        rotate(-3deg);
+}
+
+
+.network-line.line-b {
+
+    width: 64vw;
+
+    right: -12vw;
+    top: 57%;
+
+    transform:
+        rotate(3deg);
+}
+
+
+.network-line.line-c {
+
+    width: 72vw;
+
+    left: -15vw;
+    top: 81%;
+
+    transform:
+        rotate(-2deg);
+}
+
+
+.signal {
+
+    position: absolute;
+
+    width: 34px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(113,196,239,.9),
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px rgba(113,196,239,.55);
+
+    animation:
+        dataSignal 8s linear infinite;
+}
+
+
+.signal.green {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(153,194,77,.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px rgba(153,194,77,.45);
+}
+
+
+.signal.s1 {
+
+    top: 31%;
+    left: -5%;
+}
+
+
+.signal.s2 {
+
+    top: 57%;
+    left: -10%;
+
+    animation-delay: 3s;
+}
+
+
+.signal.s3 {
+
+    top: 81%;
+    left: -8%;
+
+    animation-delay: 5.5s;
+}
+
+
+@keyframes dataSignal {
+
+    0% {
+
+        transform:
+            translateX(0);
+
+        opacity: 0;
+    }
+
+
+    8% {
+
+        opacity: .75;
+    }
+
+
+    75% {
+
+        opacity: .65;
+    }
+
+
+    100% {
+
+        transform:
+            translateX(120vw);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding-bottom: 40px;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.page-heading {
+
+    margin-bottom: 28px;
+}
+
+
+.page-heading h1 {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    color: #fffefb;
+
+    margin-bottom: 7px;
+
+    letter-spacing:
+        -1px;
+}
+
+
+.page-heading p {
+
+    color: #aaa8a5;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.controls-bar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.search-input {
+
+    background:
+        #3b3c3d;
+
+    border:
+        1px solid #b6ccd8;
+
+    padding:
+        10px 18px;
+
+    border-radius: 30px;
+
+    color: #fffefb;
+
+    font-family:
+        'Inter',
+        sans-serif;
+
+    font-size: 12px;
+
+    width: 260px;
+
+    outline: none;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.search-input::placeholder {
+
+    color: #777573;
+}
+
+
+.search-input:focus {
+
+    border-color:
+        #71c4ef;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(113,196,239,.07);
+}
+
+
+.btn-add-supplier {
+
+    display: none;
+
+    background:
+        #d4eaf7;
+
+    border:
+        1px solid #b6ccd8;
+
+    color:
+        #00668c;
+
+    padding:
+        8px 16px;
+
+    border-radius: 30px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   SUPPLIER GRID
+========================================================= */
+
+.suppliers-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   SUPPLIER CARD
+========================================================= */
+
+.card-box {
+
+    position: relative;
+
+    background:
+        rgba(59,60,61,.82);
+
+    border:
+        1px solid rgba(182,204,216,.55);
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.35);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+}
+
+
+.card-box:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        #71c4ef;
+
+    background:
+        rgba(64,65,66,.95);
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 17px;
+}
+
+
+/* =========================================================
+   ICON CONTAINER
+========================================================= */
+
+.icon-container {
+
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(113,196,239,.08);
+
+    border:
+        1px solid rgba(113,196,239,.25);
+}
+
+
+.card-icon {
+
+    width: 21px;
+    height: 21px;
+
+    stroke: #71c4ef;
+
+    stroke-width: 1.55;
+
+    fill: none;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   ICON VARIATIONS
+========================================================= */
+
+.icon-container.transport {
+
+    background:
+        rgba(153,194,77,.07);
+
+    border-color:
+        rgba(153,194,77,.22);
+}
+
+
+.icon-container.transport .card-icon {
+
+    stroke:
+        #99c24d;
+}
+
+
+.icon-container.energy {
+
+    background:
+        rgba(255,196,95,.07);
+
+    border-color:
+        rgba(255,196,95,.22);
+}
+
+
+.icon-container.energy .card-icon {
+
+    stroke:
+        #f5c35b;
+}
+
+
+.icon-container.warning {
+
+    background:
+        rgba(239,68,68,.07);
+
+    border-color:
+        rgba(239,68,68,.25);
+}
+
+
+.icon-container.warning .card-icon {
+
+    stroke:
+        #ef4444;
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.card-title h3 {
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #fffefb;
+
+    margin-bottom: 4px;
+}
+
+
+.card-title p {
+
+    font-size: 11px;
+
+    color: #aaa8a5;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   INFO ROWS
+========================================================= */
+
+.info-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    font-size: 11px;
+
+    padding:
+        9px 0;
+
+    border-bottom:
+        1px solid
+        rgba(182,204,216,.1);
+}
+
+
+.info-label {
+
+    color: #9c9a97;
+}
+
+
+.info-val {
+
+    color: #fffefb;
+
+    font-weight: 600;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    background:
+        rgba(113,196,239,.08);
+
+    color:
+        #71c4ef;
+
+    border:
+        1px solid
+        rgba(113,196,239,.28);
+
+    padding:
+        4px 9px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+.status-badge::before {
+
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        #71c4ef;
+
+    box-shadow:
+        0 0 6px
+        rgba(113,196,239,.7);
+}
+
+
+.status-badge.danger {
+
+    background:
+        rgba(239,68,68,.08);
+
+    color:
+        #ef4444;
+
+    border-color:
+        rgba(239,68,68,.3);
+}
+
+
+.status-badge.danger::before {
+
+    background:
+        #ef4444;
+
+    box-shadow:
+        0 0 6px
+        rgba(239,68,68,.7);
+}
+
+
+/* =========================================================
+   DETAILS BUTTON
+========================================================= */
+
+.btn-details {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    background:
+        transparent;
+
+    border:
+        1px solid
+        rgba(182,204,216,.55);
+
+    color:
+        #fffefb;
+
+    width: 100%;
+
+    padding:
+        10px;
+
+    border-radius: 100px;
+
+    font-weight: 600;
+
+    font-size: 11px;
+
+    margin-top: 16px;
+
+    text-decoration:
+        none;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        color .3s ease,
+        transform .25s ease;
+}
+
+
+.btn-details:hover {
+
+    background:
+        #71c4ef;
+
+    color:
+        #1d1c1c;
+
+    border-color:
+        #71c4ef;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+
+    position: relative;
+
+    width: 100%;
+
+    border-top:
+        1px solid
+        rgba(182,204,216,.22);
+
+    padding:
+        28px 5%;
+
+    z-index: 5;
+
+    margin-top: 60px;
+
+    background:
+        #1d1c1c;
+}
+
+
+.footer-inner {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.footer-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #deddda;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.footer-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #71c4ef;
+
+    box-shadow:
+        0 0 8px
+        rgba(113,196,239,.6);
+}
+
+
+.footer-copy,
+.footer-year {
+
+    color: #777573;
+
+    font-size: 9px;
+
+    letter-spacing: .3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 900px) {
+
+    .suppliers-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media(max-width: 700px) {
+
+    .navbar-glass {
+
+        width: 94%;
+
+        padding:
+            11px 18px;
+    }
+
+
+    .nav-links {
+
+        display: none;
+    }
+
+
+    .page-heading h1 {
+
+        font-size: 26px;
+    }
+
+
+    .controls-bar {
+
+        align-items:
+            stretch;
+    }
+
+
+    .search-input {
+
+        width: 100%;
+    }
+
+
+    .footer-inner {
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        text-align: center;
+    }
+
+}
+
+
+@media(max-width: 600px) {
+
+    .welcome-user {
+
+        font-size: 10px;
+    }
+
+
+    .logout-btn {
+
+        padding:
+            7px 10px;
+
+        font-size: 9px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
+
+<div class="tech-network">
+
+    <div class="network-line line-a"></div>
+
+    <div class="network-line line-b green"></div>
+
+    <div class="network-line line-c"></div>
+
+    <div class="signal s1"></div>
+
+    <div class="signal s2 green"></div>
+
+    <div class="signal s3"></div>
+
+</div>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar-glass">
+
+
+    <a
+        href="index.html"
+        class="nav-brand"
+    >
+
+        <span class="logo-dot"></span>
+
+        <span>
+            FlowChain
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <ul class="nav-links">
+
+
+            <li>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="inventory.html">
+                    Operations
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a
+                    href="suppliers.html"
+                    class="active"
+                >
+                    Suppliers
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="contact.html">
+                    Support
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </nav>
+
+
+    <div
+        class="nav-actions"
+        id="navActions"
+    >
+
+        <a
+            href="login.html"
+            class="btn-login"
+        >
+            Login
+        </a>
+
+
+        <a
+            href="register.html"
+            class="btn-access"
+        >
+            REQUEST ACCESS
+        </a>
+
+    </div>
+
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="container">
+
+
+    <!-- PAGE HEADING -->
+
+    <div class="page-heading">
+
+        <h1>
+            Verified Supplier Network
+        </h1>
+
+        <p>
+            Manage trusted suppliers, compare lead times,
+            and monitor delivery performance.
+        </p>
+
+    </div>
+
+
+    <!-- CONTROLS -->
+
+    <div class="controls-bar">
+
+        <input
+            type="text"
+            id="supplierSearch"
+            class="search-input"
+            placeholder="Search supplier or specialty..."
+            onkeyup="filterSuppliers()"
+        >
+
+
+        <a
+            href="#"
+            id="addSupplierBtn"
+            class="btn-add-supplier"
+            onclick="alert('Admin Action: New supplier registration portal opened.')"
+        >
+            + Add New Supplier
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         SUPPLIER GRID
+    ====================================================== -->
+
+    <div
+        class="suppliers-grid"
+        id="suppliersGrid"
+    >
+
+
+        <!-- =================================================
+             SUPPLIER 1
+        ================================================== -->
+
+        <div
+            class="card-box"
+            data-name="Apex Heavy Industries Hydraulic"
+        >
+
+
+            <div class="card-header">
+
+
+                <div class="icon-container">
+
+
+                    <svg
+                        class="card-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path d="M4 18h16"></path>
+
+                        <path d="M6 18V8h12v10"></path>
+
+                        <path d="M9 8V5h6v3"></path>
+
+                        <path d="M8 12h8"></path>
+
+                        <path d="M8 15h5"></path>
+
+                    </svg>
+
+
+                </div>
+
+
+                <div class="card-title">
+
+                    <h3>
+                        Apex Heavy Industries
+                    </h3>
+
+                    <p>
+                        Hydraulic Systems &
+                        Heavy Machinery Parts
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Lead Time
+                </span>
+
+                <span class="info-val">
+                    3 Business Days
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Performance Rating
+                </span>
+
+                <span class="info-val">
+                    ★★★★★ (99.2%)
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Contract Status
+                </span>
+
+                <span class="status-badge">
+                    Active & Verified
+                </span>
+
+            </div>
+
+
+            <a
+                href="supplier-details.html?id=apex"
+                class="btn-details"
+            >
+                View Details →
+            </a>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SUPPLIER 2
+        ================================================== -->
+
+        <div
+            class="card-box"
+            data-name="Titanium Core Logistics Transport"
+        >
+
+
+            <div class="card-header">
+
+
+                <div class="icon-container transport">
+
+
+                    <svg
+                        class="card-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path d="M3 5h11v11H3z"></path>
+
+                        <path d="M14 8h4l3 3v5h-7"></path>
+
+                        <circle
+                            cx="7"
+                            cy="18"
+                            r="2"
+                        ></circle>
+
+                        <circle
+                            cx="18"
+                            cy="18"
+                            r="2"
+                        ></circle>
+
+                        <path d="M9 18h7"></path>
+
+                    </svg>
+
+
+                </div>
+
+
+                <div class="card-title">
+
+                    <h3>
+                        Titanium Core Logistics
+                    </h3>
+
+                    <p>
+                        Industrial Transport &
+                        Raw Materials
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Lead Time
+                </span>
+
+                <span class="info-val">
+                    5 Business Days
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Performance Rating
+                </span>
+
+                <span class="info-val">
+                    ★★★★★ (98.5%)
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Contract Status
+                </span>
+
+                <span class="status-badge">
+                    Active & Verified
+                </span>
+
+            </div>
+
+
+            <a
+                href="supplier-details.html?id=titanium"
+                class="btn-details"
+            >
+                View Details →
+            </a>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SUPPLIER 3
+        ================================================== -->
+
+        <div
+            class="card-box"
+            data-name="Gulf Petro-Parts Corp Refinery Valves"
+        >
+
+
+            <div class="card-header">
+
+
+                <div class="icon-container energy">
+
+
+                    <svg
+                        class="card-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path d="M5 21V9"></path>
+
+                        <path d="M9 21V5"></path>
+
+                        <path d="M13 21V11"></path>
+
+                        <path d="M17 21V7"></path>
+
+                        <path d="M21 21V3"></path>
+
+                        <path d="M3 21h19"></path>
+
+                    </svg>
+
+
+                </div>
+
+
+                <div class="card-title">
+
+                    <h3>
+                        Gulf Petro-Parts Corp
+                    </h3>
+
+                    <p>
+                        Refinery Valves &
+                        Pipeline Sensors
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Lead Time
+                </span>
+
+                <span class="info-val">
+                    2 Business Days
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Performance Rating
+                </span>
+
+                <span class="info-val">
+                    ★★★★★ (99.7%)
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Contract Status
+                </span>
+
+                <span class="status-badge">
+                    Active & Verified
+                </span>
+
+            </div>
+
+
+            <a
+                href="supplier-details.html?id=gulf"
+                class="btn-details"
+            >
+                View Details →
+            </a>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SUPPLIER 4
+        ================================================== -->
+
+        <div
+            class="card-box"
+            data-name="Omega Logistics Secondary Transport Risk"
+        >
+
+
+            <div class="card-header">
+
+
+                <div class="icon-container warning">
+
+
+                    <svg
+                        class="card-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path
+                            d="M12 3L2.5 20h19L12 3z"
+                        ></path>
+
+                        <path d="M12 9v5"></path>
+
+                        <path d="M12 17h.01"></path>
+
+                    </svg>
+
+
+                </div>
+
+
+                <div class="card-title">
+
+                    <h3>
+                        Omega Logistics
+                    </h3>
+
+                    <p style="color:#ef4444;">
+                        Secondary Transport &
+                        Parts (Under Review)
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Lead Time
+                </span>
+
+                <span
+                    class="info-val"
+                    style="color:#ef4444;"
+                >
+                    14 Days (Delayed)
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Performance Rating
+                </span>
+
+                <span
+                    class="info-val"
+                    style="color:#ef4444;"
+                >
+                    ★★☆☆☆ (64.5%)
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Contract Status
+                </span>
+
+                <span class="status-badge danger">
+                    High Risk / Review
+                </span>
+
+            </div>
+
+
+            <a
+                href="supplier-details.html?id=omega"
+                class="btn-details"
+                style="border-color:#ef4444;color:#ef4444;"
+            >
+                Review & Terminate →
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+
+    <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+            <span class="footer-dot"></span>
+
+            <span>
+                FlowChain
+            </span>
+
+        </div>
+
+
+        <div class="footer-copy">
+
+            Industrial Supply Chain Intelligence
+
+        </div>
+
+
+        <div class="footer-year">
+
+            © 2026 FlowChain
+
+        </div>
+
+
+    </div>
+
+
+</footer>
+
+
+<!-- =========================================================
+     SUPPLIER SEARCH
+========================================================= -->
+
+<script>
+
+function filterSuppliers() {
+
+    const input =
+        document
+            .getElementById(
+                "supplierSearch"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const cards =
+        document.querySelectorAll(
+            ".card-box"
+        );
+
+
+    cards.forEach(
+        function(card) {
+
+            const name =
+                (
+                    card.dataset.name ||
+                    ""
+                ).toLowerCase();
+
+
+            if (
+                name.includes(input)
+            ) {
+
+                card.style.display =
+                    "";
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+</script>
+
+
+<!-- =========================================================
+     USER SESSION
+========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const navActions =
+            document.getElementById(
+                "navActions"
+            );
+
+
+        if (!navActions) {
+            return;
+        }
+
+
+        const storedUser =
+            localStorage.getItem(
+                "flowchainUser"
+            );
+
+
+        if (!storedUser) {
+            return;
+        }
+
+
+        let user = null;
+
+
+        try {
+
+            user =
+                JSON.parse(
+                    storedUser
+                );
+
+        } catch (error) {
+
+            localStorage.removeItem(
+                "flowchainUser"
+            );
+
+            localStorage.removeItem(
+                "flowchainLoggedIn"
+            );
+
+            localStorage.removeItem(
+                "flowchainUserName"
+            );
+
+            localStorage.removeItem(
+                "flowchainAccountType"
+            );
+
+            return;
+        }
+
+
+        if (
+            !user ||
+            !user.name
+        ) {
+            return;
+        }
+
+
+        navActions.innerHTML = `
+
+            <div class="welcome-user">
+
+                <span class="welcome-text">
+                    Welcome,
+                </span>
+
+                <span class="employee-name">
+                    ${user.name}
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-btn"
+                onclick="flowchainLogout()"
+            >
+                Logout
+            </button>
+
+        `;
+
+    }
+);
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function flowchainLogout() {
+
+    localStorage.removeItem(
+        "flowchainUser"
+    );
+
+    localStorage.removeItem(
+        "flowchainLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "flowchainUserName"
+    );
+
+    localStorage.removeItem(
+        "flowchainAccountType"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

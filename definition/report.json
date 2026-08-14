@@ -1,0 +1,94 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "Simple-Teal",
+      "reportVersionAtImport": {
+        "visual": "1.8.39",
+        "report": "2.0.39",
+        "page": "1.3.39"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Simple-Teal.json",
+      "reportVersionAtImport": {
+        "visual": "1.8.40",
+        "report": "2.0.40",
+        "page": "1.3.40"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "Simple-Teal",
+          "path": "BaseThemes/Simple-Teal.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "efficiency12703109909631005.png",
+          "path": "efficiency12703109909631005.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group-51.svg",
+          "path": "Group-51.svg",
+          "type": "Image"
+        },
+        {
+          "name": "important944399503214077.png",
+          "path": "important944399503214077.png",
+          "type": "Image"
+        },
+        {
+          "name": "review037677455918132874.png",
+          "path": "review037677455918132874.png",
+          "type": "Image"
+        },
+        {
+          "name": "selection8646680954106845.png",
+          "path": "selection8646680954106845.png",
+          "type": "Image"
+        },
+        {
+          "name": "Simple-Teal.json",
+          "path": "Simple-Teal.json",
+          "type": "CustomTheme"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "defaultFilterActionIsDataFilter": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}
