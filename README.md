@@ -2,308 +2,246 @@
 
 ### Industrial Operations & Supply Chain Intelligence Platform
 
-🌐 **Live Demo:**  
-https://danalhazmi.github.io/FlowChain-Industrial-Operations-Supply-Chain-Intelligence/
+🌐 **Live Demo:** [https://danalhazmi.github.io/FlowChain-Industrial-Operations-Supply-Chain-Intelligence/](https://danalhazmi.github.io/FlowChain-Industrial-Operations-Supply-Chain-Intelligence/)
 
 > **Connect the operation. Understand the data. Enable the decision.**
 
-FlowChain is a connected **Industrial Operations & Supply Chain Intelligence platform** designed to demonstrate how operational data, workflows, identity, access governance, supplier intelligence, and analytics can work together within a single ecosystem.
+FlowChain is a connected **Industrial Operations & Supply Chain Intelligence platform** designed to demonstrate how operational data, workflows, access governance, and analytics can work together within a single ecosystem.
 
-Rather than treating assets, suppliers, requests, users, permissions, and analytics as isolated components, FlowChain connects them through a unified operational concept that follows the movement of information from:
+Instead of treating assets, suppliers, requests, users, permissions, and analytics as isolated components, FlowChain connects them into a unified operational concept that supports **operational visibility, workflow management, access governance, and data-driven decision-making**.
+
+---
+
+## 📑 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [Project Vision](#-project-vision)
+- [Key Features](#-key-features)
+- [System Architecture](#-system-architecture)
+- [Access Governance & Permissions](#-access-governance--permissions)
+- [Role-Based Access Control](#-role-based-access-control)
+- [Access Request Lifecycle](#-access-request-lifecycle)
+- [Tech Stack](#-tech-stack)
+- [Screenshots](#-screenshots)
+- [Getting Started](#-getting-started)
+- [Contact](#-contact)
+
+---
+
+## 🚀 Project Overview
+
+In industrial environments, operational information is distributed across multiple areas such as:
+
+- Assets
+- Suppliers
+- Maintenance
+- Operational Requests
+- Telemetry
+- User Identity
+- Access Permissions
+- Performance Data
+- Analytics
+
+When these elements operate separately, understanding the complete operational picture becomes more difficult.
+
+**FlowChain addresses this concept by connecting these layers into one system.**
+
+The platform follows the movement of information through:
 
 **User → Access → Operations → Workflow → Data → Analytics → Decision**
 
-The project combines **Industrial Operations, Supply Chain Intelligence, Access Governance, Workflow Management, Business Intelligence, and UX/UI design** into one connected platform experience.
+The project was designed as a **Connected Operational System**, rather than a traditional website consisting of independent pages.
 
 ---
 
-# 🚀 Project Overview
+## 🎯 Project Vision
 
-Industrial environments depend on multiple types of information operating simultaneously.
-
-These may include:
-
-- Assets
-- Asset Telemetry
-- Maintenance
-- Suppliers
-- Procurement
-- Operational Requests
-- User Identity
-- Access Permissions
-- Operational Performance
-- Analytics
-- Decision-Making
-
-When these elements operate independently, the operational picture becomes fragmented.
-
-A user may know the status of an asset without understanding its maintenance requirements, while supplier performance, operational requests, access permissions, and analytical insights may exist somewhere else.
-
-**FlowChain explores the concept of connecting these layers into one operational ecosystem.**
-
-The platform was designed around the idea that operational intelligence should not stop at displaying information.
-
-It should connect:
-
-**Visibility → Workflow → Governance → Analytics → Decision**
-
----
-
-# 🎯 Project Vision
-
-FlowChain was built around one central question:
+FlowChain was built around one core question:
 
 > **What if the problem is not a lack of data, but the fact that data, operations, and decisions are disconnected?**
 
-The goal was not to create a traditional website consisting of independent pages.
+The goal was to create an operational concept that demonstrates how different organizational processes can interact within the same ecosystem.
 
-Instead, FlowChain was designed as a **Connected Operational System** where each part has a specific purpose and contributes to the wider operational lifecycle.
+FlowChain connects:
 
-The platform connects:
-
-- User identity
-- Access governance
-- Operational intelligence
-- Supplier management
-- Asset monitoring
-- Operational workflows
+- Users
+- Access Governance
+- Assets
+- Suppliers
+- Operational Requests
+- Workflows
+- Operational Data
 - Analytics
-- Decision intelligence
+- Decision Intelligence
 
-This creates a system concept where information moves continuously through the organization rather than remaining isolated within individual modules.
+This creates a connected flow from the point where a user enters the system to the point where operational data is transformed into actionable insights.
 
 ---
 
-# 🧩 System Architecture
+## ✨ Key Features
 
-FlowChain is organized around three interconnected system layers.
+| FeatureDescription           |                                                                                                             |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| 🔐 Access Governance         | Every new account goes through an Access Request → Pending → Approve/Reject workflow before gaining access. |
+| 🧭 Role-Based Access Control | Standard Users and Administrators get different views and permissions across the platform.                  |
+| ⚙️ Asset Intelligence        | Real-time monitoring of industrial assets, telemetry, alerts, and maintenance schedules.                    |
+| 🤝 Supplier Intelligence     | Tracks supplier performance, lead time, contract status, and risk level.                                    |
+| 📋 Operational Workflow      | Structured request lifecycle: Submitted → In Review → Approved → Completed.                                 |
+| 📊 Live Power BI Analytics   | Executive dashboard connected to a live Power BI report with KPIs, trends, and performance insights.        |
 
-## 1. Operational Layer
+---
 
-The Operational Layer focuses on operational visibility and workflow execution.
+## 🧩 System Architecture
+
+FlowChain is structured around three connected layers:
+
+### 1. Operational Layer
+
+The Operational Layer focuses on operational visibility and workflow management.
 
 It includes:
 
 - Asset Intelligence
 - Monitored Assets
-- Asset Details
 - Live Telemetry
-- Operational Efficiency
-- Critical Alerts
 - Maintenance Tracking
 - Supplier Management
 - Supplier Performance
-- Supplier Risk
 - Operational Requests
-- Maintenance Requests
-- Inventory Requests
-- Supplier Requests
-- Operational Support Requests
-- Workflow Tracking
+- Operational Workflows
+
+This layer allows users to understand the current operational state and interact with operational processes.
 
 ---
 
-## 2. Governance Layer
+### 2. Governance Layer
 
-The Governance Layer controls **who can access the platform, how access is granted, and what each account type is authorized to use.**
+The Governance Layer controls **who can access the platform and what they are authorized to access**.
 
 It includes:
 
-- User Identity
-- Employee Information
-- Institutional Email Verification
-- Work / National ID
+- Employee Identity Verification
 - Access Requests
-- Request Status
-- Identity Verification
+- Work / National ID Verification
 - Access Approval
 - Access Rejection
 - Role-Based Access Control (RBAC)
 - Session Management
 - Admin Control Center
-- User Management
+- User Access Management
 
-The access lifecycle follows:
+The access model follows:
 
-**Identity → Access Request → Verification → Approval → Authorization → Platform Access**
+**Identity → Authentication → Authorization → Role → Access**
+
+![Admin Access Management](Screenshots/admin-access-management.png)
 
 ---
 
-## 3. Analytics Layer
+### 3. Analytics Layer
 
-The Analytics Layer transforms operational information into decision-oriented insights.
+The Analytics Layer transforms operational information into executive-level insights.
 
 It includes:
 
-- Power BI
-- Executive Analytics
+- Power BI (Live Embedded Report)
 - Operational KPIs
-- Supplier Performance
-- Asset Insights
-- Request Analysis
 - Performance Trends
-- Operational Trends
+- Supplier Performance
+- Request Analysis
+- Operational Insights
 - Decision Intelligence
-- Actionable Insights
 
-The analytics lifecycle follows:
+The purpose of this layer is to move beyond simply displaying data and instead use it to support operational understanding and decision-making.
 
-**Operational Data → Analysis → Insight → Decision**
+![Power BI Analytics](Screenshots/powerbi-analytics.png)
 
 ---
 
-# 🔐 Access Governance & Permissions
+## 🔐 Access Governance & Permissions
 
 Access governance is a core part of FlowChain.
 
 The platform does not treat authentication as simply entering a username and password.
 
-Instead, access is controlled through an approval-based process.
+When a new employee creates an account, an **Access Request** is created containing relevant employee information such as:
 
-A new employee first submits an **Access Request** containing the required identity and organizational information.
+- Full Name
+- Corporate Email
+- Work / National ID
+- Request ID
+- Account Information
 
-The request remains:
+The request initially enters a **Pending** state.
 
-**Pending**
-
-until an authorized administrator reviews it.
-
-The administrator can then:
-
-**Approve → Access Granted**
-
-or
-
-**Reject → Access Denied**
-
-This creates an access lifecycle based on:
-
-**Identity → Verification → Authorization → Role → Access**
+The account does not receive platform access until the request has been reviewed and approved.
 
 ---
 
-# 👤 User Roles & Permissions
+## 🛡️ Role-Based Access Control
 
-FlowChain uses a role-based access concept where the experience and available capabilities depend on the user's account type.
+FlowChain uses a **Role-Based Access Control (RBAC)** concept to control access to different areas of the platform.
 
-The platform contains two primary account types:
+The user's account type determines the experience and permissions available to that user.
 
-## Employee
+The system distinguishes between authorized administrative users and standard users.
 
-The Employee account represents a standard operational user.
+### Standard Users
 
-Employees can access the operational side of the platform and interact with the capabilities intended for day-to-day operational use.
+Standard users can access the operational experience of the platform according to their assigned permissions.
 
-### Employee Access
-
-Employees can access:
+This includes areas such as:
 
 - Home
 - About
 - Operations
 - Asset Intelligence
-- Asset Details
 - Suppliers
-- Supplier Information
 - Operational Requests
-- Request Submission
-- Request Tracking
 - Support
 
-Employees can:
+### Administrators
 
-- View operational information
-- Explore monitored assets
-- Review asset status
-- View telemetry and operational indicators
-- Review supplier information
-- Submit operational requests
-- Track submitted requests
-- Access support functionality
+Administrators have additional permissions for managing access and reviewing protected operational and analytical areas.
 
-### Employee Restrictions
+Administrative capabilities include:
 
-Employees do **not** have administrative authorization.
-
-They cannot:
-
-- Approve access requests
-- Reject access requests
-- Manage employee accounts
-- Control user authorization
-- Access the Admin Control Center
-- Manage platform-level permissions
-- Access administrator-only analytics areas
-
----
-
-# 🛡️ Administrator
-
-The Administrator account represents an authorized platform administrator.
-
-Administrators have access to the operational experience in addition to protected administrative and analytical capabilities.
-
-### Administrator Access
-
-Administrators can access:
-
-- Public Operational Experience
-- Operations
-- Asset Intelligence
-- Suppliers
-- Operational Requests
-- Analytics
-- Power BI Executive Dashboard
+- Reviewing Access Requests
+- Verifying Employee Information
+- Approving Access
+- Rejecting Access
+- Managing User Access
+- Access Governance
 - Admin Control Center
-- Access Request Management
-- User Management
-- Identity Verification
-- Access Approval
-- Access Rejection
+- Protected Analytics
 
-### Administrator Capabilities
+This ensures that administrative functionality is not exposed as part of the standard user experience.
 
-Administrators can:
-
-- Review employee access requests
-- Review employee identity information
-- Verify submitted employee information
-- Approve access requests
-- Reject access requests
-- Manage authorized users
-- Control administrative access
-- Monitor platform activity
-- Review supplier performance
-- Access protected analytics
-- Review operational insights
-
-The administrator therefore acts as the governance layer between:
-
-**Requested Access → Verified Identity → Authorized Account**
+![Admin Control Center](Screenshots/admin-control-center.png)
 
 ---
 
-# 🔄 Access Request Lifecycle
+## 🔑 Access Request Lifecycle
 
-FlowChain includes an approval workflow for new platform access.
-
-The process begins when an employee submits an access request.
+The access process follows a defined workflow:
 
 ```text
-Employee
-   ↓
-Access Request
-   ↓
-Pending
-   ↓
-Admin Review
-   ↓
+Account Registration
+        ↓
+Access Request Created
+        ↓
+      Pending
+        ↓
 Identity Verification
+        ↓
+    Admin Review
+        ↓
+   ┌───────────────┐
+   ↓               ↓
+Approve          Reject
+   ↓               ↓
+Access Granted   Access Denied
    ↓
- ┌───────────────┐
- │               │
-Approve        Reject
- │               │
- ↓               ↓
-Access          Access
-Granted         Denied
+Role Assigned (Standard User / Administrator)
+   ↓
+Platform Access Enabled
